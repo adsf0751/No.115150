@@ -1,0 +1,81 @@
+#ifndef _USBLIB_H
+#define _USBLIB_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#if READER_MANUFACTURERS!=NE_PAXSXX && READER_MANUFACTURERS!=CS_PAXSXX && READER_MANUFACTURERS != SYSTEX_CASTLES
+
+#define d_NO_ERROR				0x00000000
+#define d_INVALID_HANDLE		0x00000001
+#define d_TX_TIMEOUT			0x00000002
+#define d_RX_TIMEOUT			0x00000003
+#define d_LRC_INCORRECT			0x00000004
+#define d_BUF_NOT_ENOUGH		0x00000005
+#define d_RX_PROTOCOL_LEN_ERROR	0x00000006
+
+#define	d_COM_NOT_OPENED			0x8000000E
+#define	d_USB_NOT_OPENED			0x8000000F
+
+#define	d_COM_IO_TX_FAIL			0x80000011
+#define	d_COM_IO_RX_FAIL			0x80000012
+#define	d_USB_IO_TX_FAIL			0x80000013
+#define	d_USB_IO_RX_FAIL			0x80000014
+#define	d_SOCKET_ERROR				0x80000020
+#define	d_TCP_IO_TX_FAIL			0x80000021
+#define	d_TCP_IO_RX_FAIL			0x80000022
+#define	d_TCP_TX_LEN_ERROR			0x80000023
+#define d_USB_SET_TIMEROUT_ERR		0x80000024
+
+#define OS_UNKNOWN		0
+#define OS_WIN95		1
+#define OS_WIN95OSR2	2
+#define OS_WIN98		3
+#define OS_WIN98SE		4
+#define OS_WINME		5
+#define OS_WINNT40		6
+#define OS_WIN2000		7
+#define OS_WINXP		8
+
+#define EZPROX_CTL_CODE(code)					CTL_CODE(FILE_DEVICE_UNKNOWN, \
+														(code), \
+														METHOD_BUFFERED, \
+														FILE_ANY_ACCESS)
+
+#define IOCTL_SMARTCARD_BULK_WRITE				EZPROX_CTL_CODE(2054)
+#define IOCTL_SMARTCARD_BULK_READ				EZPROX_CTL_CODE(2055)
+#define IOCTL_SMARTCARD_SET_TIMEOUT    			EZPROX_CTL_CODE(2059)
+
+#define IOCTL_EZPROX_ASNYC_ENTER                EZPROX_CTL_CODE(2080)
+#define IOCTL_EZPROX_ASYNC_FLUSH                EZPROX_CTL_CODE(2081)
+#define IOCTL_EZPROX_ASYNC_READ                 EZPROX_CTL_CODE(2082)
+#define IOCTL_EZPROX_ASNYC_LEAVE                EZPROX_CTL_CODE(2084)
+
+BOOL WINAPI EzrUSBSearchDevice(DWORD *count);
+
+HANDLE WINAPI EzrUSBOpen(DWORD instance);
+
+BOOL WINAPI EzrUSBClose(IN OUT HANDLE *hUSB);
+
+ULONG WINAPI EzrUSBRead(
+	IN 		HANDLE 	hUSB,
+    IN      ULONG 	ulRxSize,
+    OUT     ULONG   *ulRxLen,
+    OUT 	BYTE	*baRxBuf);
+
+ULONG WINAPI EzrUSBWrite(
+	IN	HANDLE 	hUSB,
+    IN	ULONG 	ulTxLen,
+    IN	BYTE 	*baTxBuf);
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
+
+
+

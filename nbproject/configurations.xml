@@ -1,0 +1,3080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="AMEX" displayName="AMEX" projectFiles="true">
+      <itemPath>AMEX/AMEXiso.c</itemPath>
+      <itemPath>AMEX/AMEXiso.h</itemPath>
+      <itemPath>AMEX/AMEXsrc.c</itemPath>
+      <itemPath>AMEX/AMEXsrc.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="CREDIT" displayName="CREDIT" projectFiles="true">
+      <itemPath>CREDIT/CreditCard.c</itemPath>
+      <itemPath>CREDIT/CreditCard.h</itemPath>
+      <itemPath>CREDIT/Creditfunc.c</itemPath>
+      <itemPath>CREDIT/Creditfunc.h</itemPath>
+      <itemPath>CREDIT/CreditprtByBuffer.c</itemPath>
+      <itemPath>CREDIT/CreditprtByBuffer.h</itemPath>
+      <itemPath>CREDIT/CreditprtByBuffer2.c</itemPath>
+      <itemPath>CREDIT/CreditprtByBuffer3.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="CTLS" displayName="CTLS" projectFiles="true">
+      <itemPath>CTLS/CTLS.c</itemPath>
+      <itemPath>CTLS/CTLS.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="DINERS" displayName="DINERS" projectFiles="true">
+      <itemPath>DINERS/DINERSiso.c</itemPath>
+      <itemPath>DINERS/DINERSiso.h</itemPath>
+      <itemPath>DINERS/DINERSsrc.c</itemPath>
+      <itemPath>DINERS/DINERSsrc.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f4" displayName="ECC" projectFiles="true">
+      <logicalFolder name="f1" displayName="ICER" projectFiles="true">
+        <itemPath>ECC/ICER/APDU.c</itemPath>
+        <itemPath>ECC/ICER/APDU.h</itemPath>
+        <itemPath>ECC/ICER/BLC.c</itemPath>
+        <itemPath>ECC/ICER/BLC.h</itemPath>
+        <itemPath>ECC/ICER/BankData.c</itemPath>
+        <itemPath>ECC/ICER/BankData.h</itemPath>
+        <itemPath>ECC/ICER/CMAS_APDU.c</itemPath>
+        <itemPath>ECC/ICER/CMAS_APDU.h</itemPath>
+        <itemPath>ECC/ICER/CMAS_TM.c</itemPath>
+        <itemPath>ECC/ICER/CMAS_TM.h</itemPath>
+        <itemPath>ECC/ICER/CallAPI.c</itemPath>
+        <itemPath>ECC/ICER/CallAPI.h</itemPath>
+        <itemPath>ECC/ICER/Com.c</itemPath>
+        <itemPath>ECC/ICER/Com.h</itemPath>
+        <itemPath>ECC/ICER/ECCLib.c</itemPath>
+        <itemPath>ECC/ICER/ECCLib.h</itemPath>
+        <itemPath>ECC/ICER/Error.h</itemPath>
+        <itemPath>ECC/ICER/Function.c</itemPath>
+        <itemPath>ECC/ICER/Function.h</itemPath>
+        <itemPath>ECC/ICER/Global.h</itemPath>
+        <itemPath>ECC/ICER/ICERAPI.c</itemPath>
+        <itemPath>ECC/ICER/ICERAPI.h</itemPath>
+        <itemPath>ECC/ICER/ICERAes.c</itemPath>
+        <itemPath>ECC/ICER/ICERAes.h</itemPath>
+        <itemPath>ECC/ICER/ICERLib.c</itemPath>
+        <itemPath>ECC/ICER/ICERLib.h</itemPath>
+        <itemPath>ECC/ICER/LIB.h</itemPath>
+        <itemPath>ECC/ICER/SIS2.c</itemPath>
+        <itemPath>ECC/ICER/SIS2.h</itemPath>
+        <itemPath>ECC/ICER/SIS2_2.c</itemPath>
+        <itemPath>ECC/ICER/SIS2_2.h</itemPath>
+        <itemPath>ECC/ICER/SSL.c</itemPath>
+        <itemPath>ECC/ICER/SSL.h</itemPath>
+        <itemPath>ECC/ICER/SubStruct.h</itemPath>
+        <itemPath>ECC/ICER/TCPIP.c</itemPath>
+        <itemPath>ECC/ICER/TCPIP.h</itemPath>
+        <itemPath>ECC/ICER/TM.c</itemPath>
+        <itemPath>ECC/ICER/TM.h</itemPath>
+        <itemPath>ECC/ICER/XMLFunc.c</itemPath>
+        <itemPath>ECC/ICER/XMLFunc.h</itemPath>
+        <itemPath>ECC/ICER/libutil.h</itemPath>
+        <itemPath>ECC/ICER/stdAfx.h</itemPath>
+        <itemPath>ECC/ICER/usblib.h</itemPath>
+      </logicalFolder>
+      <itemPath>ECC/ECC.c</itemPath>
+      <itemPath>ECC/ECC.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="EMVSRC" displayName="EMVSRC" projectFiles="true">
+      <itemPath>EMVSRC/EMVsrc.c</itemPath>
+      <itemPath>EMVSRC/EMVsrc.h</itemPath>
+      <itemPath>EMVSRC/EMVxml.c</itemPath>
+      <itemPath>EMVSRC/EMVxml.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f1" displayName="ETicket" projectFiles="true">
+      <itemPath>ETicket/Ticket.c</itemPath>
+      <itemPath>ETicket/Ticket.h</itemPath>
+      <itemPath>ETicket/eticket.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="FISC" displayName="FISC" projectFiles="true">
+      <itemPath>FISC/NCCCfisc.c</itemPath>
+      <itemPath>FISC/NCCCfisc.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>NCCC/NCCCTrust_struct.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HG" displayName="HG" projectFiles="true">
+      <itemPath>HG/HGiso.c</itemPath>
+      <itemPath>HG/HGiso.h</itemPath>
+      <itemPath>HG/HGsrc.c</itemPath>
+      <itemPath>HG/HGsrc.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ICASH" displayName="ICASH" projectFiles="true">
+      <itemPath>ICASH/ICASHFunc.c</itemPath>
+      <itemPath>ICASH/ICASHFunc.h</itemPath>
+      <itemPath>ICASH/icash2api.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f2" displayName="IPASS" projectFiles="true">
+      <itemPath>IPASS/IPASSFunc.c</itemPath>
+      <itemPath>IPASS/IPASSFunc.h</itemPath>
+      <itemPath>IPASS/IPassMicroPayment.h</itemPath>
+      <itemPath>IPASS/IPassMicroPayment_Config.h</itemPath>
+      <itemPath>IPASS/IPassMicroPayment_ErrCode.h</itemPath>
+      <itemPath>IPASS/IPassMicroPayment_IntTypes.h</itemPath>
+      <itemPath>IPASS/IPassMicroPayment_PackedStructBegin.h</itemPath>
+      <itemPath>IPASS/IPassMicroPayment_PackedStructEnd.h</itemPath>
+      <itemPath>IPASS/IPassMicroPayment_System.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="NCCC" displayName="NCCC" projectFiles="true">
+      <itemPath>NCCC/NCCCEWiso.c</itemPath>
+      <itemPath>NCCC/NCCCEWiso.h</itemPath>
+      <itemPath>NCCC/NCCCEWsrc.c</itemPath>
+      <itemPath>NCCC/NCCCEWsrc.h</itemPath>
+      <itemPath>NCCC/NCCCTicketIso.c</itemPath>
+      <itemPath>NCCC/NCCCTicketIso.h</itemPath>
+      <itemPath>NCCC/NCCCTicketSrc.c</itemPath>
+      <itemPath>NCCC/NCCCTicketSrc.h</itemPath>
+      <itemPath>NCCC/NCCCTrust.c</itemPath>
+      <itemPath>NCCC/NCCCTrust.h</itemPath>
+      <itemPath>NCCC/NCCCats.c</itemPath>
+      <itemPath>NCCC/NCCCats.h</itemPath>
+      <itemPath>NCCC/NCCCdcc.c</itemPath>
+      <itemPath>NCCC/NCCCdcc.h</itemPath>
+      <itemPath>NCCC/NCCCesc.c</itemPath>
+      <itemPath>NCCC/NCCCesc.h</itemPath>
+      <itemPath>NCCC/NCCCescReceipt.c</itemPath>
+      <itemPath>NCCC/NCCCescReceipt.h</itemPath>
+      <itemPath>NCCC/NCCCloyalty.c</itemPath>
+      <itemPath>NCCC/NCCCloyalty.h</itemPath>
+      <itemPath>NCCC/NCCCmfes.c</itemPath>
+      <itemPath>NCCC/NCCCmfes.h</itemPath>
+      <itemPath>NCCC/NCCCsrc.c</itemPath>
+      <itemPath>NCCC/NCCCsrc.h</itemPath>
+      <itemPath>NCCC/NCCCsrc2.c</itemPath>
+      <itemPath>NCCC/NCCCtSAM.c</itemPath>
+      <itemPath>NCCC/NCCCtSAM.h</itemPath>
+      <itemPath>NCCC/NCCCtest.c</itemPath>
+      <itemPath>NCCC/NCCCtest.h</itemPath>
+      <itemPath>NCCC/NCCCtmk.c</itemPath>
+      <itemPath>NCCC/NCCCtmk.h</itemPath>
+      <itemPath>NCCC/NCCCtms.c</itemPath>
+      <itemPath>NCCC/NCCCtms.h</itemPath>
+      <itemPath>NCCC/NCCCtmsCPT.c</itemPath>
+      <itemPath>NCCC/NCCCtmsCPT.h</itemPath>
+      <itemPath>NCCC/NCCCtmsFLT.c</itemPath>
+      <itemPath>NCCC/NCCCtmsFLT.h</itemPath>
+      <itemPath>NCCC/NCCCtmsFTP.c</itemPath>
+      <itemPath>NCCC/NCCCtmsFTP.h</itemPath>
+      <itemPath>NCCC/NCCCtmsFTPFLT.c</itemPath>
+      <itemPath>NCCC/NCCCtmsFTPFLT.h</itemPath>
+      <itemPath>NCCC/NCCCtmsSCT.c</itemPath>
+      <itemPath>NCCC/NCCCtmsSCT.h</itemPath>
+      <itemPath>NCCC/NCCCtmsiso.c</itemPath>
+      <itemPath>NCCC/NCCCtmsiso.h</itemPath>
+      <itemPath>NCCC/TAKAiso.c</itemPath>
+      <itemPath>NCCC/TAKAiso.h</itemPath>
+      <itemPath>NCCC/TAKAsrc.c</itemPath>
+      <itemPath>NCCC/TAKAsrc.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SOURCE" displayName="SOURCE" projectFiles="true">
+      <logicalFolder name="COMM" displayName="COMM" projectFiles="true">
+        <itemPath>SOURCE/COMM/Bluetooth.c</itemPath>
+        <itemPath>SOURCE/COMM/Bluetooth.h</itemPath>
+        <itemPath>SOURCE/COMM/Comm.c</itemPath>
+        <itemPath>SOURCE/COMM/Comm.h</itemPath>
+        <itemPath>SOURCE/COMM/Ethernet.c</itemPath>
+        <itemPath>SOURCE/COMM/Ethernet.h</itemPath>
+        <itemPath>SOURCE/COMM/Ftps.c</itemPath>
+        <itemPath>SOURCE/COMM/Ftps.h</itemPath>
+        <itemPath>SOURCE/COMM/Ftps_Struct.h</itemPath>
+        <itemPath>SOURCE/COMM/GPRS.c</itemPath>
+        <itemPath>SOURCE/COMM/GPRS.h</itemPath>
+        <itemPath>SOURCE/COMM/GSM.c</itemPath>
+        <itemPath>SOURCE/COMM/GSM.h</itemPath>
+        <itemPath>SOURCE/COMM/Modem.c</itemPath>
+        <itemPath>SOURCE/COMM/Modem.h</itemPath>
+        <itemPath>SOURCE/COMM/TLS.c</itemPath>
+        <itemPath>SOURCE/COMM/TLS.h</itemPath>
+        <itemPath>SOURCE/COMM/UDP.c</itemPath>
+        <itemPath>SOURCE/COMM/UDP.h</itemPath>
+        <itemPath>SOURCE/COMM/WiFi.c</itemPath>
+        <itemPath>SOURCE/COMM/WiFi.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="DISPLAY" displayName="DISPLAY" projectFiles="true">
+        <itemPath>SOURCE/DISPLAY/DisTouch.c</itemPath>
+        <itemPath>SOURCE/DISPLAY/DisTouch.h</itemPath>
+        <itemPath>SOURCE/DISPLAY/DispMsg.h</itemPath>
+        <itemPath>SOURCE/DISPLAY/Display.c</itemPath>
+        <itemPath>SOURCE/DISPLAY/Display.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="EVENT" displayName="EVENT" projectFiles="true">
+        <itemPath>SOURCE/EVENT/CustomerMenu.c</itemPath>
+        <itemPath>SOURCE/EVENT/CustomerMenu.h</itemPath>
+        <itemPath>SOURCE/EVENT/Event.c</itemPath>
+        <itemPath>SOURCE/EVENT/Event.h</itemPath>
+        <itemPath>SOURCE/EVENT/Event_Struct.h</itemPath>
+        <itemPath>SOURCE/EVENT/Flow.c</itemPath>
+        <itemPath>SOURCE/EVENT/Flow.h</itemPath>
+        <itemPath>SOURCE/EVENT/Menu.c</itemPath>
+        <itemPath>SOURCE/EVENT/Menu.h</itemPath>
+        <itemPath>SOURCE/EVENT/MenuMsg.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="FUNCTION" displayName="FUNCTION" projectFiles="true">
+        <itemPath>SOURCE/FUNCTION/APDU.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/APDU.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/ASMC.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/ASMC.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Accum.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Accum.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Accum_Struct.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/BaseUSB.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/BaseUSB.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Batch.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Batch.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Big5NameT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Big5NameT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/CCI.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/CCI.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/CDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/CDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/CDTX.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/CDTX.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/CFGT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/CFGT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/CPT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/CPT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/CPT_Backup.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/CPT_Backup.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Card.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Card.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/CastlePWD.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/CastlePWD.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECCDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECCDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECR.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECR.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECR2.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECR3.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECR_Define.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/ECR_Struct.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/EDC.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/EDC.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/EDC_Para_Table_Func.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/EDC_Para_Table_Func.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/EST.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/EST.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/File.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/File.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/FuncTable.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/FuncTable.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Function.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Function.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Function2.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/HDPT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/HDPT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/HDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/HDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/ICASHDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/ICASHDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/IPASSDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/IPASSDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/KMS.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/KMS.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/MVT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/MVT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/MultiFunc.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/MultiFunc.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/NexsysSDK.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/NexsysSDK.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/PCD.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/PCD.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/PIT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/PIT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/PWD.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/PWD.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/PowerManagement.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/PowerManagement.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/QAT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/QAT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/RS232.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/RS232.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/SCDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/SCDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/SKM.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/SKM.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/SPAY.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/SPAY.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Signpad.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Signpad.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Sqlite.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Sqlite.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Sqlite_Struct.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/TDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/TDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/TMSIPDT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/TMSIPDT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/USB.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/USB.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/Utility.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/Utility.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/VWT.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/VWT.h</itemPath>
+        <itemPath>SOURCE/FUNCTION/XML.c</itemPath>
+        <itemPath>SOURCE/FUNCTION/XML.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="INCLUDES" displayName="INCLUDES" projectFiles="true">
+        <itemPath>SOURCE/INCLUDES/AllStruct.h</itemPath>
+        <itemPath>SOURCE/INCLUDES/Define_1.h</itemPath>
+        <itemPath>SOURCE/INCLUDES/Define_2.h</itemPath>
+        <itemPath>SOURCE/INCLUDES/TransType.h</itemPath>
+        <itemPath>SOURCE/INCLUDES/Transaction.h</itemPath>
+        <itemPath>SOURCE/INCLUDES/Transaction_struct.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="PRINT" displayName="PRINT" projectFiles="true">
+        <itemPath>SOURCE/PRINT/Print.c</itemPath>
+        <itemPath>SOURCE/PRINT/Print.h</itemPath>
+        <itemPath>SOURCE/PRINT/PrtMsg.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>appmain.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>NbMakefile</projectmakefile>
+  <confs>
+    <conf name="V3" type="1">
+      <toolsSet>
+        <compilerSet>Gnueabi|Gnueabi</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandlineTool>arm-brcm-linux-gnueabi-gcc</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <preprocessorList>
+            <Elem>LIB_DEFINE</Elem>
+            <Elem>RDEVN = NE_NEXSYS_V3</Elem>
+            <Elem>READER_MANUFACTURERS = NEXSYS_CASTLES</Elem>
+            <Elem>_MACHINE_TYPE_ = _CASTLE_TYPE_V3C_</Elem>
+            <Elem>_NEW_ECC_NEXSYS_</Elem>
+            <Elem>_NEXSYS_APP_MODE_ = _NEXSYS_APP_MODE_AP_</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>dist/V3/NEXSYS</output>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibLibItem>caaep</linkerLibLibItem>
+            <linkerLibLibItem>cabarcode</linkerLibLibItem>
+            <linkerLibLibItem>caclentry</linkerLibLibItem>
+            <linkerLibLibItem>caclmdl</linkerLibLibItem>
+            <linkerLibLibItem>caclvw</linkerLibLibItem>
+            <linkerLibLibItem>cacqp</linkerLibLibItem>
+            <linkerLibLibItem>caddp</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2ap</linkerLibLibItem>
+            <linkerLibLibItem>caethernet</linkerLibLibItem>
+            <linkerLibLibItem>cafont</linkerLibLibItem>
+            <linkerLibLibItem>cafs</linkerLibLibItem>
+            <linkerLibLibItem>cagsm</linkerLibLibItem>
+            <linkerLibLibItem>caifh</linkerLibLibItem>
+            <linkerLibLibItem>cajct</linkerLibLibItem>
+            <linkerLibLibItem>cakms</linkerLibLibItem>
+            <linkerLibLibItem>calcd</linkerLibLibItem>
+            <linkerLibLibItem>camms</linkerLibLibItem>
+            <linkerLibLibItem>camodem</linkerLibLibItem>
+            <linkerLibLibItem>campp</linkerLibLibItem>
+            <linkerLibLibItem>capemenc</linkerLibLibItem>
+            <linkerLibLibItem>capmodem</linkerLibLibItem>
+            <linkerLibLibItem>caprt</linkerLibLibItem>
+            <linkerLibLibItem>cartc</linkerLibLibItem>
+            <linkerLibLibItem>casqlite</linkerLibLibItem>
+            <linkerLibLibItem>catls</linkerLibLibItem>
+            <linkerLibLibItem>cauart</linkerLibLibItem>
+            <linkerLibLibItem>cauldpm</linkerLibLibItem>
+            <linkerLibLibItem>causbh</linkerLibLibItem>
+            <linkerLibLibItem>cavap</linkerLibLibItem>
+            <linkerLibLibItem>cavpw</linkerLibLibItem>
+            <linkerLibLibItem>caxml</linkerLibLibItem>
+            <linkerLibLibItem>ctosapi</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+            <linkerLibLibItem>gmp</linkerLibLibItem>
+            <linkerLibLibItem>iw</linkerLibLibItem>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibLibItem>z</linkerLibLibItem>
+            <linkerLibLibItem>bmp</linkerLibLibItem>
+            <linkerLibLibItem>caqrcode</linkerLibLibItem>
+            <linkerLibLibItem>casignature</linkerLibLibItem>
+            <linkerLibLibItem>iconv</linkerLibLibItem>
+            <linkerLibFileItem>libv3app_ipassmicropayment.a</linkerLibFileItem>
+            <linkerLibFileItem>ECC_PS_Castles_V3_M_MART_v816R00.a</linkerLibFileItem>
+            <linkerLibFileItem>icash2api.a</linkerLibFileItem>
+            <linkerLibLibItem>crypto_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>curl_7_61_1</linkerLibLibItem>
+            <linkerLibLibItem>ssh2_1_8_2</linkerLibLibItem>
+            <linkerLibLibItem>ssl_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>ecchal_nexsys</linkerLibLibItem>
+            <linkerLibLibItem>v5spbm</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-L . "-L${SDKV3LIB}" "-L${SDKV3LIBN}"</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="AMEX/AMEXiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ECC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ECC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Global.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/LIB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SubStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/libutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/stdAfx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/usblib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/eticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/icash2api.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_ErrCode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_IntTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructBegin.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructEnd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust_struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DispMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/MenuMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/AllStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/TransType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction_struct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/PrtMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="appmain.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+    <conf name="V3_ECCTEST" type="1">
+      <toolsSet>
+        <compilerSet>Gnueabi|Gnueabi</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandlineTool>arm-brcm-linux-gnueabi-gcc</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <preprocessorList>
+            <Elem>LIB_DEFINE</Elem>
+            <Elem>RDEVN = NE_NEXSYS_V3</Elem>
+            <Elem>READER_MANUFACTURERS = NEXSYS_CASTLES</Elem>
+            <Elem>_MACHINE_TYPE_ = _CASTLE_TYPE_V3C_</Elem>
+            <Elem>_NEW_ECC_NEXSYS_</Elem>
+            <Elem>_NEXSYS_APP_MODE_ = _NEXSYS_APP_MODE_AP_</Elem>
+            <Elem>_TEST_CERTIFICATE_</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>dist/V3_ECCTEST/NEXSYS</output>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibLibItem>caaep</linkerLibLibItem>
+            <linkerLibLibItem>cabarcode</linkerLibLibItem>
+            <linkerLibLibItem>caclentry</linkerLibLibItem>
+            <linkerLibLibItem>caclmdl</linkerLibLibItem>
+            <linkerLibLibItem>caclvw</linkerLibLibItem>
+            <linkerLibLibItem>cacqp</linkerLibLibItem>
+            <linkerLibLibItem>caddp</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2ap</linkerLibLibItem>
+            <linkerLibLibItem>caethernet</linkerLibLibItem>
+            <linkerLibLibItem>cafont</linkerLibLibItem>
+            <linkerLibLibItem>cafs</linkerLibLibItem>
+            <linkerLibLibItem>cagsm</linkerLibLibItem>
+            <linkerLibLibItem>caifh</linkerLibLibItem>
+            <linkerLibLibItem>cajct</linkerLibLibItem>
+            <linkerLibLibItem>cakms</linkerLibLibItem>
+            <linkerLibLibItem>calcd</linkerLibLibItem>
+            <linkerLibLibItem>camms</linkerLibLibItem>
+            <linkerLibLibItem>camodem</linkerLibLibItem>
+            <linkerLibLibItem>campp</linkerLibLibItem>
+            <linkerLibLibItem>capemenc</linkerLibLibItem>
+            <linkerLibLibItem>capmodem</linkerLibLibItem>
+            <linkerLibLibItem>caprt</linkerLibLibItem>
+            <linkerLibLibItem>cartc</linkerLibLibItem>
+            <linkerLibLibItem>casqlite</linkerLibLibItem>
+            <linkerLibLibItem>catls</linkerLibLibItem>
+            <linkerLibLibItem>cauart</linkerLibLibItem>
+            <linkerLibLibItem>cauldpm</linkerLibLibItem>
+            <linkerLibLibItem>causbh</linkerLibLibItem>
+            <linkerLibLibItem>cavap</linkerLibLibItem>
+            <linkerLibLibItem>cavpw</linkerLibLibItem>
+            <linkerLibLibItem>caxml</linkerLibLibItem>
+            <linkerLibLibItem>ctosapi</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+            <linkerLibLibItem>gmp</linkerLibLibItem>
+            <linkerLibLibItem>iw</linkerLibLibItem>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibLibItem>z</linkerLibLibItem>
+            <linkerLibLibItem>bmp</linkerLibLibItem>
+            <linkerLibLibItem>caqrcode</linkerLibLibItem>
+            <linkerLibLibItem>casignature</linkerLibLibItem>
+            <linkerLibLibItem>iconv</linkerLibLibItem>
+            <linkerLibFileItem>libv3app_ipassmicropayment.a</linkerLibFileItem>
+            <linkerLibFileItem>V3_M_MART_v816R00_for_test.a</linkerLibFileItem>
+            <linkerLibFileItem>icash2api.a</linkerLibFileItem>
+            <linkerLibLibItem>crypto_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>curl_7_61_1</linkerLibLibItem>
+            <linkerLibLibItem>ssh2_1_8_2</linkerLibLibItem>
+            <linkerLibLibItem>ssl_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>ecchal_nexsys</linkerLibLibItem>
+            <linkerLibLibItem>v5spbm</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-L . "-L${SDKV3LIB}" "-L${SDKV3LIBN}"</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="AMEX/AMEXiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ECC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ECC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Global.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/LIB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SubStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/libutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/stdAfx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/usblib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/eticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/icash2api.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_ErrCode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_IntTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructBegin.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructEnd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust_struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DispMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/MenuMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/AllStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/TransType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction_struct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/PrtMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="appmain.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+    <conf name="V3_MFES" type="1">
+      <toolsSet>
+        <compilerSet>Gnueabi|Gnueabi</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandlineTool>arm-brcm-linux-gnueabi-gcc</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <preprocessorList>
+            <Elem>LIB_DEFINE</Elem>
+            <Elem>RDEVN = NE_NEXSYS_V3</Elem>
+            <Elem>READER_MANUFACTURERS = NEXSYS_CASTLES</Elem>
+            <Elem>_MACHINE_TYPE_ = _CASTLE_TYPE_V3C_</Elem>
+            <Elem>_NCCC_AP_ID_MFES_</Elem>
+            <Elem>_NEW_ECC_NEXSYS_</Elem>
+            <Elem>_NEXSYS_APP_MODE_ = _NEXSYS_APP_MODE_AP_</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>dist/V3_MFES/NEXSYS</output>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibLibItem>caaep</linkerLibLibItem>
+            <linkerLibLibItem>cabarcode</linkerLibLibItem>
+            <linkerLibLibItem>caclentry</linkerLibLibItem>
+            <linkerLibLibItem>caclmdl</linkerLibLibItem>
+            <linkerLibLibItem>caclvw</linkerLibLibItem>
+            <linkerLibLibItem>cacqp</linkerLibLibItem>
+            <linkerLibLibItem>caddp</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2ap</linkerLibLibItem>
+            <linkerLibLibItem>caethernet</linkerLibLibItem>
+            <linkerLibLibItem>cafont</linkerLibLibItem>
+            <linkerLibLibItem>cafs</linkerLibLibItem>
+            <linkerLibLibItem>cagsm</linkerLibLibItem>
+            <linkerLibLibItem>caifh</linkerLibLibItem>
+            <linkerLibLibItem>cajct</linkerLibLibItem>
+            <linkerLibLibItem>cakms</linkerLibLibItem>
+            <linkerLibLibItem>calcd</linkerLibLibItem>
+            <linkerLibLibItem>camms</linkerLibLibItem>
+            <linkerLibLibItem>camodem</linkerLibLibItem>
+            <linkerLibLibItem>campp</linkerLibLibItem>
+            <linkerLibLibItem>capemenc</linkerLibLibItem>
+            <linkerLibLibItem>capmodem</linkerLibLibItem>
+            <linkerLibLibItem>caprt</linkerLibLibItem>
+            <linkerLibLibItem>cartc</linkerLibLibItem>
+            <linkerLibLibItem>casqlite</linkerLibLibItem>
+            <linkerLibLibItem>catls</linkerLibLibItem>
+            <linkerLibLibItem>cauart</linkerLibLibItem>
+            <linkerLibLibItem>cauldpm</linkerLibLibItem>
+            <linkerLibLibItem>causbh</linkerLibLibItem>
+            <linkerLibLibItem>cavap</linkerLibLibItem>
+            <linkerLibLibItem>cavpw</linkerLibLibItem>
+            <linkerLibLibItem>caxml</linkerLibLibItem>
+            <linkerLibLibItem>ctosapi</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+            <linkerLibLibItem>gmp</linkerLibLibItem>
+            <linkerLibLibItem>iw</linkerLibLibItem>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibLibItem>z</linkerLibLibItem>
+            <linkerLibLibItem>bmp</linkerLibLibItem>
+            <linkerLibLibItem>caqrcode</linkerLibLibItem>
+            <linkerLibLibItem>casignature</linkerLibLibItem>
+            <linkerLibLibItem>iconv</linkerLibLibItem>
+            <linkerLibFileItem>libv3app_ipassmicropayment.a</linkerLibFileItem>
+            <linkerLibFileItem>ECC_PS_Castles_V3_M_MART_v816R00.a</linkerLibFileItem>
+            <linkerLibFileItem>icash2api.a</linkerLibFileItem>
+            <linkerLibLibItem>crypto_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>curl_7_61_1</linkerLibLibItem>
+            <linkerLibLibItem>ssh2_1_8_2</linkerLibLibItem>
+            <linkerLibLibItem>ssl_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>ecchal_nexsys</linkerLibLibItem>
+            <linkerLibLibItem>v5spbm</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-L . "-L${SDKV3LIB}" "-L${SDKV3LIBN}"</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="AMEX/AMEXiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ECC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ECC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Global.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/LIB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SubStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/libutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/stdAfx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/usblib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/eticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/icash2api.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_ErrCode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_IntTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructBegin.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructEnd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust_struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DispMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/MenuMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/AllStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/TransType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction_struct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/PrtMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="appmain.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+    <conf name="V3_MFES_ECCTEST" type="1">
+      <toolsSet>
+        <compilerSet>Gnueabi|Gnueabi</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandlineTool>arm-brcm-linux-gnueabi-gcc</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <preprocessorList>
+            <Elem>LIB_DEFINE</Elem>
+            <Elem>RDEVN = NE_NEXSYS_V3</Elem>
+            <Elem>READER_MANUFACTURERS = NEXSYS_CASTLES</Elem>
+            <Elem>_MACHINE_TYPE_ = _CASTLE_TYPE_V3C_</Elem>
+            <Elem>_NCCC_AP_ID_MFES_</Elem>
+            <Elem>_NEW_ECC_NEXSYS_</Elem>
+            <Elem>_NEXSYS_APP_MODE_ = _NEXSYS_APP_MODE_AP_</Elem>
+            <Elem>_TEST_CERTIFICATE_</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <incDir>
+            <pElem>C:/Program Files/Castles/VEGA3000/include</pElem>
+            <pElem>C:/Program Files (x86)/Castles/VEGA3000/include</pElem>
+            <pElem>C:/cygwin</pElem>
+          </incDir>
+          <commandLine>"-I${SDKV3INC}" -fsigned-char -Wundef -Wstrict-prototypes -Wno-trigraphs -Wimplicit -Wformat</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>dist/V3_MFES_ECCTEST/NEXSYS</output>
+          <commandlineTool>arm-brcm-linux-gnueabi-g++</commandlineTool>
+          <linkerLibItems>
+            <linkerLibLibItem>caaep</linkerLibLibItem>
+            <linkerLibLibItem>cabarcode</linkerLibLibItem>
+            <linkerLibLibItem>caclentry</linkerLibLibItem>
+            <linkerLibLibItem>caclmdl</linkerLibLibItem>
+            <linkerLibLibItem>caclvw</linkerLibLibItem>
+            <linkerLibLibItem>cacqp</linkerLibLibItem>
+            <linkerLibLibItem>caddp</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2</linkerLibLibItem>
+            <linkerLibLibItem>caemvl2ap</linkerLibLibItem>
+            <linkerLibLibItem>caethernet</linkerLibLibItem>
+            <linkerLibLibItem>cafont</linkerLibLibItem>
+            <linkerLibLibItem>cafs</linkerLibLibItem>
+            <linkerLibLibItem>cagsm</linkerLibLibItem>
+            <linkerLibLibItem>caifh</linkerLibLibItem>
+            <linkerLibLibItem>cajct</linkerLibLibItem>
+            <linkerLibLibItem>cakms</linkerLibLibItem>
+            <linkerLibLibItem>calcd</linkerLibLibItem>
+            <linkerLibLibItem>camms</linkerLibLibItem>
+            <linkerLibLibItem>camodem</linkerLibLibItem>
+            <linkerLibLibItem>campp</linkerLibLibItem>
+            <linkerLibLibItem>capemenc</linkerLibLibItem>
+            <linkerLibLibItem>capmodem</linkerLibLibItem>
+            <linkerLibLibItem>caprt</linkerLibLibItem>
+            <linkerLibLibItem>cartc</linkerLibLibItem>
+            <linkerLibLibItem>casqlite</linkerLibLibItem>
+            <linkerLibLibItem>catls</linkerLibLibItem>
+            <linkerLibLibItem>cauart</linkerLibLibItem>
+            <linkerLibLibItem>cauldpm</linkerLibLibItem>
+            <linkerLibLibItem>causbh</linkerLibLibItem>
+            <linkerLibLibItem>cavap</linkerLibLibItem>
+            <linkerLibLibItem>cavpw</linkerLibLibItem>
+            <linkerLibLibItem>caxml</linkerLibLibItem>
+            <linkerLibLibItem>ctosapi</linkerLibLibItem>
+            <linkerLibLibItem>freetype</linkerLibLibItem>
+            <linkerLibLibItem>gmp</linkerLibLibItem>
+            <linkerLibLibItem>iw</linkerLibLibItem>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibLibItem>z</linkerLibLibItem>
+            <linkerLibLibItem>bmp</linkerLibLibItem>
+            <linkerLibLibItem>caqrcode</linkerLibLibItem>
+            <linkerLibLibItem>casignature</linkerLibLibItem>
+            <linkerLibLibItem>iconv</linkerLibLibItem>
+            <linkerLibFileItem>libv3app_ipassmicropayment.a</linkerLibFileItem>
+            <linkerLibFileItem>V3_M_MART_v816R00_for_test.a</linkerLibFileItem>
+            <linkerLibFileItem>icash2api.a</linkerLibFileItem>
+            <linkerLibLibItem>crypto_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>curl_7_61_1</linkerLibLibItem>
+            <linkerLibLibItem>ssh2_1_8_2</linkerLibLibItem>
+            <linkerLibLibItem>ssl_1_1_1</linkerLibLibItem>
+            <linkerLibLibItem>ecchal_nexsys</linkerLibLibItem>
+            <linkerLibLibItem>v5spbm</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-L . "-L${SDKV3LIB}" "-L${SDKV3LIBN}"</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="AMEX/AMEXiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="AMEX/AMEXsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditCard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/Creditfunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CREDIT/CreditprtByBuffer3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="CTLS/CTLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DINERS/DINERSsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ECC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ECC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BLC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/BankData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CMAS_TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/CallAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Com.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ECCLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/Global.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAPI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERAes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/ICERLib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/LIB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SIS2_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SSL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/SubStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TCPIP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/TM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ECC/ICER/XMLFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/libutil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/stdAfx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ECC/ICER/usblib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="EMVSRC/EMVxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ETicket/Ticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ETicket/eticket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="FISC/NCCCfisc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HG/HGsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ICASH/ICASHFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ICASH/icash2api.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="IPASS/IPASSFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_Config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_ErrCode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_IntTypes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructBegin.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_PackedStructEnd.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="IPASS/IPassMicroPayment_System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCEWsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketIso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTicketSrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCTrust_struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCats.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCdcc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCesc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCescReceipt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCloyalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCmfes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCsrc2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtSAM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmk.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsCPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsFTPFLT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsSCT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/NCCCtmsiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAiso.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="NCCC/TAKAsrc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Bluetooth.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Comm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ethernet.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Ftps_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GPRS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/GSM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/Modem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/TLS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/UDP.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/COMM/WiFi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DisTouch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/DispMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/DISPLAY/Display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/CustomerMenu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Event_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Flow.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/Menu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/EVENT/MenuMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/APDU.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ASMC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Accum_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/BaseUSB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Batch.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Big5NameT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CCI.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CDTX.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CFGT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CPT_Backup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Card.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/CastlePWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ECR_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EDC_Para_Table_Func.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/EST.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/File.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/FuncTable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Function2.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDPT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/HDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/ICASHDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/IPASSDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/KMS.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MVT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/MultiFunc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/NexsysSDK.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PCD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PIT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PWD.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/PowerManagement.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/QAT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/RS232.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SCDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SKM.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/SPAY.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Signpad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Sqlite_Struct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/TMSIPDT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/USB.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/VWT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/FUNCTION/XML.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/AllStruct.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Define_2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/TransType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/INCLUDES/Transaction_struct.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/Print.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOURCE/PRINT/PrtMsg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="appmain.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

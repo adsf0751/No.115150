@@ -1,0 +1,38 @@
+int inModem_Open(void);
+int inModem_Close(void);
+int inModem_Dial(unsigned char *uszNumber, unsigned short usLen);
+int inModem_GetStatus(unsigned int *uiStatus);
+int inModem_WatchStatus(void);
+int inModem_IsAlreadyOpen(unsigned int uiStatus);
+int inModem_IsAlready_MODEM_Online(unsigned int uiStatus);
+int inModem_IsAlready_SDLC_MODE(unsigned int uiStatus);
+int inModem_IsAlready_SDLC_Online(unsigned int uiStatus);
+int inModem_IsAlready_Dialing(unsigned int uiStatus);
+int inModem_IsAlready_LineBusy(unsigned int uiStatus);
+int inModem_Send_Ready(void);
+int inModem_Send_Data(unsigned char* uszData, unsigned short usLen);
+int inModem_Receive_Ready(unsigned short *usLen);
+int inModem_Receive_Data(unsigned char* uszData, unsigned short *usLen);
+int inModem_Hook_On(void);
+int inModem_Flush_Rx(void);
+
+int inModem_Predial(TRANSACTION_OBJECT *pobTran);
+int inModem_Initial(void);
+int inModem_Begin(TRANSACTION_OBJECT *pobTran);
+int inModem_Connect(void);
+int inModem_Send(unsigned char* szSendBuff, int inSendSize, int inTimeout);
+int inModem_Receive(unsigned char* szReceiveBuff, int inReceiveSize, int inReceiveTimeout);
+int inModem_END(void);
+int inModem_Flush(void);
+int inModem_DeInitial(void);
+int inModem_SetConfig(unsigned char uszTag, unsigned short usValue);
+int inModem_SetCarrier_Present_Time(unsigned short usValue);
+int inModem_SetMin_OnHook_Duration(unsigned short usValue);
+int inModem_SetCommParam(unsigned long ulBaudRate, unsigned char uszParity, unsigned char uszDataBits, unsigned char uszStopBits);
+int inModem_SetPredial_Delay_Time(unsigned short usValue);
+int inModem_Connect_TMS(void);
+int inModem_Dial_Speed_Test(void);
+int inFunc_REFERRAL_DialVoiceLine(char *szPhoneNum);
+
+int inDialUPTest(void);
+int inGetModemStatus(void);

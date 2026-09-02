@@ -1,0 +1,16 @@
+/build
+/nbproject/private/
+**/nbproject/*.bash
+**/nbproject/*.mk
+/arm-brcm-linux-gnueabi-gdb.exe.stackdump
+/dist/V3
+/dist/V3_ECCTEST
+/dist/V3_MFES
+/dist/V3_MFES_ECCTEST
+/dist/output
+/dist/fs_data/UI_Full
+/dist/fs_data/UI_Half
+/dist/fs_data/UI_APPL_Full
+/dist/fs_data/UI_APPL_Half
+/dist/fs_data/File_Half/AppData/output
+
