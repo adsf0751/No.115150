@@ -163,4 +163,5 @@ typedef enum
 	_EW_INQUIRY_,
 	_TRUST_SALE_,
 	_TRUST_VOID_,
+	_VOID_TRANS_,	/* 終止EDC交易(限無人自助交易) [115150] */
 } TRANS_TYPE;

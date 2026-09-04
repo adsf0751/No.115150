@@ -8872,7 +8872,6 @@ Describe        :分析收銀機傳來的資料
 	inGetContactlessEnable(szCTLSEnable);
 	memset(szCUPContactlessEnable, 0x00, sizeof(szCUPContactlessEnable));
 	inGetCUPContactlessEnable(szCUPContactlessEnable);
-	
 	/* 跑OPT */
 	switch (inTransType)
 	{
@@ -10402,6 +10401,14 @@ Describe        :分析收銀機傳來的資料
 			pobTran->srBRec.inCode = _EW_INQUIRY_;
 			pobTran->inRunTRTID = _TRT_EW_INQUIRY_;
 			break;
+		case _ECR_8N1_VOID_EDC_TRANS_NO_: /*[115150]*/
+		{	
+			pobTran->inTransactionCode = _VOID_TRANS_;
+			pobTran->srBRec.inCode = _VOID_TRANS_;
+			pobTran->srBRec.inOrgCode = _VOID_TRANS_;
+			inRetVal = VS_SUCCESS;
+			break;
+		}
 		default:
 			pobTran->inECRErrorMsg = _ECR_RESPONSE_CODE_TRANS_FLOW_ERROR_;
 			inRetVal = VS_ERROR;
@@ -10430,7 +10437,6 @@ int inECR_8N1_Standard_Pack(TRANSACTION_OBJECT *pobTran, ECR_TABLE * srECROb, ch
 	char	szTemp2[8 + 1] = {0};
 	char	szCustomerIndicator[3 + 1] = {0};
 	char szEnableESG[2] = {0};
-
 	memset(szCustomerIndicator, 0x00, sizeof(szCustomerIndicator));
 	inGetCustomIndicator(szCustomerIndicator);
 
@@ -10859,7 +10865,8 @@ int inECR_8N1_Standard_Pack(TRANSACTION_OBJECT *pobTran, ECR_TABLE * srECROb, ch
 		 !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_HG_POINT_INQUIRY_, 2)		||
 		 !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_HG_FULL_REDEEMPTION_, 2)		||
 		 !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_HG_REWARD_REFUND_, 2)		||
-		 !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_HG_REDEEM_REFUND_, 2))
+		 !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_HG_REDEEM_REFUND_, 2)		||
+		 !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_VOID_EDC_TRANS_, 2))/*[115150]*/
 	{
 	        inPacketSizes += 12;
 	}
@@ -10953,7 +10960,8 @@ int inECR_8N1_Standard_Pack(TRANSACTION_OBJECT *pobTran, ECR_TABLE * srECROb, ch
 	    !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_AWARD_REDEEM_, 2)		||
 	    !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_VOID_AWARD_REDEEM_, 2)		||
 	    !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_ECHO_, 2)			||
-	    !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_EW_INQUIRY_TRANSACTION_, 2))
+	    !memcmp(srECROb->srTransData.szTransType, _ECR_8N1_EW_INQUIRY_TRANSACTION_, 2) ||
+		!memcmp(srECROb->srTransData.szTransType, _ECR_8N1_VOID_EDC_TRANS_, 2))/*[115150]*/
 	{
 		if (pobTran->srTRec.uszESVCTransBit == VS_TRUE)
 		{
@@ -10962,7 +10970,7 @@ int inECR_8N1_Standard_Pack(TRANSACTION_OBJECT *pobTran, ECR_TABLE * srECROb, ch
 			strcat(szTemplate, pobTran->srTRec.szDate);
 			memcpy(&szDataBuffer[inPacketSizes], &szTemplate[0], 6);
 			inPacketSizes += 6;
-
+                        
 			/* Trans Time */
 			memset(szTemplate, 0x00, sizeof(szTemplate));
 			strcat(szTemplate, pobTran->srTRec.szTime);
@@ -10976,7 +10984,6 @@ int inECR_8N1_Standard_Pack(TRANSACTION_OBJECT *pobTran, ECR_TABLE * srECROb, ch
 			strcat(szTemplate, pobTran->srBRec.szDate);
 			memcpy(&szDataBuffer[inPacketSizes], &szTemplate[2], 6);
 			inPacketSizes += 6;
-
 			/* Trans Time */
 			memset(szTemplate, 0x00, sizeof(szTemplate));
 			strcat(szTemplate, pobTran->srBRec.szTime);
@@ -11124,7 +11131,10 @@ int inECR_8N1_Standard_Pack(TRANSACTION_OBJECT *pobTran, ECR_TABLE * srECROb, ch
 
 	/* ECR Response Code (4 Byte) */
 	memcpy(&szDataBuffer[inPacketSizes], "0000", 4);
-	
+	if(!memcmp(srECROb->srTransData.szTransType, _ECR_8N1_VOID_EDC_TRANS_, 2))
+        {
+            memcpy(&szDataBuffer[inPacketSizes], "0006", 4);
+        }
 	inPacketSizes += 4;
 
 	/* Merchant ID (15 Byte) & Terminal ID (8 Byte) */

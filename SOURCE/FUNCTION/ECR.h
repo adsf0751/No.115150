@@ -51,7 +51,7 @@
 #define _ECR_8N1_HG_POINT_INQUIRY_		"89"	/* 快樂購點數查詢 */
 #define _ECR_8N1_ECHO_                          "98"	/* Echo Test */
 #define _ECR_8N1_EW_INQUIRY_TRANSACTION_	"68"	/* 電子錢包交易查詢 */
-
+#define _ECR_8N1_VOID_EDC_TRANS_                "90" /* 終止EDC交易(限無人自助交易) [115150] */
 #define _ECR_8N1_AWARD_REDEEM_LEN_		2
 #define _ECR_8N1_VOID_AWARD_REDEEM_LEN_		2
 
@@ -99,7 +99,7 @@
 #define _ECR_8N1_HG_POINT_INQUIRY_NO_		89	/* 快樂購點數查詢 */
 #define _ECR_8N1_ECHO_NO_                       98	/* Echo */
 #define _ECR_8N1_EW_INQUIRY_TRANSACTION_NO_	68	/* 電子錢包交易查詢 */
-
+#define _ECR_8N1_VOID_EDC_TRANS_NO_			90	/* 終止EDC交易(限無人自助交易) [115150] */
 /* ECR_NCCC_HOSTID */
 #define	_ECR_8N1_NCCC_HOSTID_NCCC_			"03"	/* U CARD、VISA、MASTER、JCB、CUP、SMART PAY*/
 #define	_ECR_8N1_NCCC_HOSTID_DCC_			"04"	/* VISA、MASTER之外幣交易 */
