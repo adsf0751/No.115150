@@ -773,7 +773,8 @@ int inFunc_GetCardFields(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields START!");
         
 	if (ginDebug == VS_TRUE)
@@ -1000,7 +1001,43 @@ int inFunc_GetCardFields(TRANSACTION_OBJECT *pobTran)
 
 			break;
                 }
-		
+			/* 走ECR流程 [115150] */
+			else if(ginEventCode == _ECR_EVENT_)
+			{
+				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+				{
+					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				}
+				else
+				{	
+					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					{
+						/* 規格Trans Type:90 不送CR */
+						/* 這邊寫法參考inNCCC_DCC_CHECK */
+						pobTran->szAgreeEsgBill[0] = 'N';
+						pobTran->uszEsgOptrionBit = VS_TRUE;
+						pobTran->szEsgSendCR[0] = 'N';
+						/* 傳Response 回pos機 */
+						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+						{	
+							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{
+							inFunc_ResetTitle(pobTran);
+							DISPLAY_OBJECT	srDispMsgObj;
+							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+							inDISP_ErrorMsg(&srDispMsgObj);
+							return (VS_ERROR);
+						}
+					}
+				}
+			}		
 		inDISP_Clear_Line(_LINE_8_4_, _LINE_8_8_);
 		/* 顯示請刷卡 */
 		if (pobTran->srBRec.uszCUPTransBit == VS_TRUE)
@@ -1065,7 +1102,21 @@ int inFunc_GetCardFields(TRANSACTION_OBJECT *pobTran)
 					inDISP_PutGraphic(_GET_CARD_, 0, _COORDINATE_Y_LINE_8_4_);
 				}
 			}
-			
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -1163,7 +1214,8 @@ int inFunc_GetCardFields_Txno(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Txno START!");
         
 	if (ginDebug == VS_TRUE)
@@ -1401,7 +1453,43 @@ int inFunc_GetCardFields_Txno(TRANSACTION_OBJECT *pobTran)
 
                         break;
                 }
-		
+			/* 走ECR流程 [115150] */
+			else if(ginEventCode == _ECR_EVENT_)
+			{
+				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+				{
+					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				}
+				else
+				{	
+					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					{
+						/* 規格Trans Type:90 不送CR */
+						/* 這邊寫法參考inNCCC_DCC_CHECK */
+						pobTran->szAgreeEsgBill[0] = 'N';
+						pobTran->uszEsgOptrionBit = VS_TRUE;
+						pobTran->szEsgSendCR[0] = 'N';
+						/* 傳Response 回pos機 */
+						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+						{	
+							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{
+							inFunc_ResetTitle(pobTran);
+							DISPLAY_OBJECT	srDispMsgObj;
+							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+							inDISP_ErrorMsg(&srDispMsgObj);
+							return (VS_ERROR);
+						}
+					}
+				}
+			}
 		inDISP_Clear_Line(_LINE_8_4_, _LINE_8_8_);
 		/* 顯示請刷銀聯卡 人工輸入按0 */
 		if (pobTran->srBRec.uszCUPTransBit == VS_TRUE)
@@ -1468,7 +1556,21 @@ int inFunc_GetCardFields_Txno(TRANSACTION_OBJECT *pobTran)
 					inDISP_PutGraphic(_GET_CARD_TXNO_, 0, _COORDINATE_Y_LINE_8_4_);
 				}
 			}
-			
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -1571,7 +1673,8 @@ int inFunc_GetCardFields_ICC(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_ICC START!");
 	if (ginDebug == VS_TRUE)
 	{
@@ -1925,7 +2028,43 @@ int inFunc_GetCardFields_ICC(TRANSACTION_OBJECT *pobTran)
 			
                         break;
                 }
-
+			/* 走ECR流程 [115150] */
+			else if(ginEventCode == _ECR_EVENT_)
+			{
+				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+				{
+					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				}
+				else
+				{	
+					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					{
+						/* 規格Trans Type:90 不送CR */
+						/* 這邊寫法參考inNCCC_DCC_CHECK */
+						pobTran->szAgreeEsgBill[0] = 'N';
+						pobTran->uszEsgOptrionBit = VS_TRUE;
+						pobTran->szEsgSendCR[0] = 'N';
+						/* 傳Response 回pos機 */
+						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+						{	
+							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{
+							inFunc_ResetTitle(pobTran);
+							DISPLAY_OBJECT	srDispMsgObj;
+							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+							inDISP_ErrorMsg(&srDispMsgObj);
+							return (VS_ERROR);
+						}
+					}
+				}
+			}
 		
 		/* 顯示請刷銀聯卡或插卡 */
 		if (pobTran->srBRec.uszCUPTransBit == VS_TRUE)
@@ -1999,7 +2138,21 @@ int inFunc_GetCardFields_ICC(TRANSACTION_OBJECT *pobTran)
 				/* 晶片卡事件 */
 				ginEventCode = _EMV_DO_EVENT_;
 			}
-
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -2098,7 +2251,6 @@ int inFunc_GetCardFields_CTLS(TRANSACTION_OBJECT *pobTran)
 	int		inMSR_RetVal = -1;	/* 磁條事件的反應，怕和其他用到inRetVal的搞混所以獨立出來 */
 	int		inEMV_RetVal = -1;	/* 晶片卡事件的反應，怕和其他用到inRetVal的搞混所以獨立出來*/
 	int		inCTLS_RetVal = -1;	/* 感應卡事件的反應，怕和其他用到inRetVal的搞混所以獨立出來*/
-	unsigned short	usLen = 0;  /* [115150] */
 	char		szKey = -1;
 	char		szTemplate[_DISP_MSG_SIZE_ + 1] = {0};
 	char		szFuncEnable[2 + 1] = {0};
@@ -2113,7 +2265,8 @@ int inFunc_GetCardFields_CTLS(TRANSACTION_OBJECT *pobTran)
 	char		szECR_UDP_Version[2 + 1] = {0};
 	long		lnTimeout = 0;
 	unsigned long   ulCTLS_RetVal = -1;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_CTLS START!");
 	if (ginDebug == VS_TRUE)
 	{
@@ -2831,10 +2984,17 @@ int inFunc_GetCardFields_CTLS(TRANSACTION_OBJECT *pobTran)
 			}
 			/* ------------偵測觸發ECR交易------------------ [115150]*/
 			if (pobTran->uszECRBit == VS_TRUE)
-			{
+			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					ginEventCode =  _ECR_EVENT_;
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
 				}
 			}
 			
@@ -3074,7 +3234,8 @@ int inFunc_GetCardFields_Refund_CTLS(TRANSACTION_OBJECT *pobTran)
 	char		szCUPContactlessEnable[1 + 1] = {0};
 	long		lnTimeout = 0;
         unsigned long   ulCTLS_RetVal = 0x00;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Refund_CTLS START!");
         
 	if (ginDebug == VS_TRUE)
@@ -3488,7 +3649,43 @@ int inFunc_GetCardFields_Refund_CTLS(TRANSACTION_OBJECT *pobTran)
 
 			break;
 		}
-                
+			/* 走ECR流程 [115150] */
+			else if(ginEventCode == _ECR_EVENT_)
+			{
+				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+				{
+					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				}
+				else
+				{	
+					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					{
+						/* 規格Trans Type:90 不送CR */
+						/* 這邊寫法參考inNCCC_DCC_CHECK */
+						pobTran->szAgreeEsgBill[0] = 'N';
+						pobTran->uszEsgOptrionBit = VS_TRUE;
+						pobTran->szEsgSendCR[0] = 'N';
+						/* 傳Response 回pos機 */
+						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+						{	
+							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{
+							inFunc_ResetTitle(pobTran);
+							DISPLAY_OBJECT	srDispMsgObj;
+							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+							inDISP_ErrorMsg(&srDispMsgObj);
+							return (VS_ERROR);
+						}
+					}
+				}
+			}                
 		/* 進迴圈前先清MSR BUFFER */
 		inCARD_Clean_MSR_Buffer();
 		while (1)
@@ -3547,7 +3744,21 @@ int inFunc_GetCardFields_Refund_CTLS(TRANSACTION_OBJECT *pobTran)
 				/* 感應卡事件 */
 				ginEventCode = _SENSOR_EVENT_;
 			}
-
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			
 			/* ------------偵測key in------------------ */
 			szKey = -1;
@@ -3686,7 +3897,8 @@ int inFunc_GetCardFields_Refund_CTLS_Txno(TRANSACTION_OBJECT *pobTran)
 	char		szCUPContactlessEnable[1 + 1] = {0};
 	long		lnTimeout = 0;
         unsigned long   ulCTLS_RetVal = 0;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Refund_CTLS_Txno START!");
         
 	if (ginDebug == VS_TRUE)
@@ -4094,7 +4306,43 @@ int inFunc_GetCardFields_Refund_CTLS_Txno(TRANSACTION_OBJECT *pobTran)
 
 			break;
 		}
-                
+			/* 走ECR流程 [115150] */
+			else if(ginEventCode == _ECR_EVENT_)
+			{
+				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+				{
+					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				}
+				else
+				{	
+					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					{
+						/* 規格Trans Type:90 不送CR */
+						/* 這邊寫法參考inNCCC_DCC_CHECK */
+						pobTran->szAgreeEsgBill[0] = 'N';
+						pobTran->uszEsgOptrionBit = VS_TRUE;
+						pobTran->szEsgSendCR[0] = 'N';
+						/* 傳Response 回pos機 */
+						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+						{	
+							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{
+							inFunc_ResetTitle(pobTran);
+							DISPLAY_OBJECT	srDispMsgObj;
+							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+							inDISP_ErrorMsg(&srDispMsgObj);
+							return (VS_ERROR);
+						}
+					}
+				}
+			}                
 		/* 進迴圈前先清MSR BUFFER */
 		inCARD_Clean_MSR_Buffer();
 		while (1)
@@ -4154,7 +4402,21 @@ int inFunc_GetCardFields_Refund_CTLS_Txno(TRANSACTION_OBJECT *pobTran)
 				/* 感應卡事件 */
 				ginEventCode = _SENSOR_EVENT_;
 			}
-
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			
 			/* ------------偵測key in------------------ */
 			szKey = -1;
@@ -4296,7 +4558,8 @@ int inFunc_GetCardFields_FISC(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_FISC START!");
         
 	if (ginDebug == VS_TRUE)
@@ -4410,7 +4673,43 @@ int inFunc_GetCardFields_FISC(TRANSACTION_OBJECT *pobTran)
 
                         break;
                 }
-
+				/* 走ECR流程 [115150] */
+				else if(ginEventCode == _ECR_EVENT_)
+				{
+					if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+					{
+						inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					}
+					else
+					{	
+						/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+						if(pobTran->inTransactionCode == _VOID_TRANS_)
+						{
+							/* 規格Trans Type:90 不送CR */
+							/* 這邊寫法參考inNCCC_DCC_CHECK */
+							pobTran->szAgreeEsgBill[0] = 'N';
+							pobTran->uszEsgOptrionBit = VS_TRUE;
+							pobTran->szEsgSendCR[0] = 'N';
+							/* 傳Response 回pos機 */
+							if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+							{	
+								/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+								inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+								vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							}
+							else
+							{
+								inFunc_ResetTitle(pobTran);
+								DISPLAY_OBJECT	srDispMsgObj;
+								memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+								snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+								inDISP_ErrorMsg(&srDispMsgObj);
+								return (VS_ERROR);
+							}
+						}
+					}
+				}
 		
 		/* 顯示請刷卡或插卡 */
 		inDISP_Clear_Line(_LINE_8_4_, _LINE_8_8_);
@@ -4433,7 +4732,21 @@ int inFunc_GetCardFields_FISC(TRANSACTION_OBJECT *pobTran)
 				/* 晶片卡事件 */
 				ginEventCode = _EMV_DO_EVENT_;
 			}
-
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -4518,7 +4831,8 @@ int inFunc_GetCardFields_FISC_CTLS(TRANSACTION_OBJECT *pobTran)
         char		szKey = 0;
 	char		szCustomerIndicator[3 + 1] = {0};
 	unsigned long   ulCTLS_RetVal = 0;
-        
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         if (ginDebug == VS_TRUE)
         {
                 inLogPrintf(AT, "----------------------------------------");
@@ -4768,7 +5082,43 @@ int inFunc_GetCardFields_FISC_CTLS(TRANSACTION_OBJECT *pobTran)
 
 			break;
 		}
-
+		/* 走ECR流程 [115150] */
+		else if(ginEventCode == _ECR_EVENT_)
+		{
+			if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+			{
+				inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+			}
+			else
+			{	
+				/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+				if(pobTran->inTransactionCode == _VOID_TRANS_)
+				{
+					/* 規格Trans Type:90 不送CR */
+					/* 這邊寫法參考inNCCC_DCC_CHECK */
+					pobTran->szAgreeEsgBill[0] = 'N';
+					pobTran->uszEsgOptrionBit = VS_TRUE;
+					pobTran->szEsgSendCR[0] = 'N';
+					/* 傳Response 回pos機 */
+					if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+					{	
+						/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+						inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					}
+					else
+					{
+						inFunc_ResetTitle(pobTran);
+						DISPLAY_OBJECT	srDispMsgObj;
+						memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+						snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+						inDISP_ErrorMsg(&srDispMsgObj);
+						return (VS_ERROR);
+					}
+				}
+			}
+		}
 		while (1)
 		{
 			ginEventCode = -1;
@@ -4787,7 +5137,21 @@ int inFunc_GetCardFields_FISC_CTLS(TRANSACTION_OBJECT *pobTran)
 				/* 感應卡事件 */
 				ginEventCode = _SENSOR_EVENT_;
 			}
-
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -4895,7 +5259,8 @@ int inFunc_GetCardFields_FISC_CTLS_Refund(TRANSACTION_OBJECT *pobTran)
 	char		szCustomerIndicator[3 + 1] = {0};
         char		szKey = 0;
 	unsigned long   ulCTLS_RetVal = 0;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */	
 	if (ginDebug == VS_TRUE)
 	{
 		inLogPrintf(AT, "----------------------------------------");
@@ -5137,7 +5502,43 @@ int inFunc_GetCardFields_FISC_CTLS_Refund(TRANSACTION_OBJECT *pobTran)
 
 			break;
 		}
-
+		/* 走ECR流程 [115150] */
+		else if(ginEventCode == _ECR_EVENT_)
+		{
+			if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+			{
+				inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+			}
+			else
+			{	
+				/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+				if(pobTran->inTransactionCode == _VOID_TRANS_)
+				{
+					/* 規格Trans Type:90 不送CR */
+					/* 這邊寫法參考inNCCC_DCC_CHECK */
+					pobTran->szAgreeEsgBill[0] = 'N';
+					pobTran->uszEsgOptrionBit = VS_TRUE;
+					pobTran->szEsgSendCR[0] = 'N';
+					/* 傳Response 回pos機 */
+					if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+					{	
+						/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+						inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					}
+					else
+					{
+						inFunc_ResetTitle(pobTran);
+						DISPLAY_OBJECT	srDispMsgObj;
+						memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+						snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+						inDISP_ErrorMsg(&srDispMsgObj);
+						return (VS_ERROR);
+					}
+				}
+			}
+		}
 		while (1)
 		{
 			ginEventCode = -1;
@@ -5156,7 +5557,21 @@ int inFunc_GetCardFields_FISC_CTLS_Refund(TRANSACTION_OBJECT *pobTran)
 				/* 感應卡事件 */
 				ginEventCode = _SENSOR_EVENT_;
 			}
-
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -5245,7 +5660,8 @@ int inFunc_GetCardFields_Loyalty_Redeem_Swipe(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Loyalty_Redeem_Swipe START!");
 	
 	if (ginDebug == VS_TRUE)
@@ -5426,7 +5842,43 @@ int inFunc_GetCardFields_Loyalty_Redeem_Swipe(TRANSACTION_OBJECT *pobTran)
 
                         break;
                 }
-		
+			/* 走ECR流程 [115150] */
+			else if(ginEventCode == _ECR_EVENT_)
+			{
+				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+				{
+					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				}
+				else
+				{	
+					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					{
+						/* 規格Trans Type:90 不送CR */
+						/* 這邊寫法參考inNCCC_DCC_CHECK */
+						pobTran->szAgreeEsgBill[0] = 'N';
+						pobTran->uszEsgOptrionBit = VS_TRUE;
+						pobTran->szEsgSendCR[0] = 'N';
+						/* 傳Response 回pos機 */
+						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+						{	
+							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{
+							inFunc_ResetTitle(pobTran);
+							DISPLAY_OBJECT	srDispMsgObj;
+							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+							inDISP_ErrorMsg(&srDispMsgObj);
+							return (VS_ERROR);
+						}
+					}
+				}
+			}
 		/* 進迴圈前先清MSR BUFFER */
 		inCARD_Clean_MSR_Buffer();
 	
@@ -5466,7 +5918,21 @@ int inFunc_GetCardFields_Loyalty_Redeem_Swipe(TRANSACTION_OBJECT *pobTran)
 				/* 顯示請刷卡或輸入卡號 */
 				inDISP_PutGraphic(_GET_CARD_AWARD_, 0, _COORDINATE_Y_LINE_8_4_);
 			}
-			
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}			
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -5570,7 +6036,8 @@ int inFunc_GetCardFields_Loyalty_Redeem_CTLS(TRANSACTION_OBJECT *pobTran)
 	char		szTemplate[3 + 1] = {0};
 	long		lnTimeout = 0;
         unsigned long   ulCTLS_RetVal = 0x00;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Loyalty_Redeem_CTLS START!");
 	
 	if (ginDebug == VS_TRUE)
@@ -5866,7 +6333,43 @@ int inFunc_GetCardFields_Loyalty_Redeem_CTLS(TRANSACTION_OBJECT *pobTran)
 
 			break;
 		}
-		
+			/* 走ECR流程 [115150] */
+			else if(ginEventCode == _ECR_EVENT_)
+			{
+				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+				{
+					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+				}
+				else
+				{	
+					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					{
+						/* 規格Trans Type:90 不送CR */
+						/* 這邊寫法參考inNCCC_DCC_CHECK */
+						pobTran->szAgreeEsgBill[0] = 'N';
+						pobTran->uszEsgOptrionBit = VS_TRUE;
+						pobTran->szEsgSendCR[0] = 'N';
+						/* 傳Response 回pos機 */
+						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+						{	
+							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{
+							inFunc_ResetTitle(pobTran);
+							DISPLAY_OBJECT	srDispMsgObj;
+							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+							inDISP_ErrorMsg(&srDispMsgObj);
+							return (VS_ERROR);
+						}
+					}
+				}
+			}		
 		
 			
 		/* 進迴圈前先清MSR BUFFER */
@@ -5918,7 +6421,22 @@ int inFunc_GetCardFields_Loyalty_Redeem_CTLS(TRANSACTION_OBJECT *pobTran)
 				/* 感應卡事件 */
 				ginEventCode = _SENSOR_EVENT_;
 			}
-			
+
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -6422,7 +6940,8 @@ int inFunc_GetCardFields_HG(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-        
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_HG START!");
         
 	memset(szCustomerIndicator, 0x00, sizeof(szCustomerIndicator));
@@ -6733,7 +7252,43 @@ int inFunc_GetCardFields_HG(TRANSACTION_OBJECT *pobTran)
 			
 			break;
                 }
-     
+				/* 走ECR流程 [115150] */
+				else if(ginEventCode == _ECR_EVENT_)
+				{
+					if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+					{
+						inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					}
+					else
+					{	
+						/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+						if(pobTran->inTransactionCode == _VOID_TRANS_)
+						{
+							/* 規格Trans Type:90 不送CR */
+							/* 這邊寫法參考inNCCC_DCC_CHECK */
+							pobTran->szAgreeEsgBill[0] = 'N';
+							pobTran->uszEsgOptrionBit = VS_TRUE;
+							pobTran->szEsgSendCR[0] = 'N';
+							/* 傳Response 回pos機 */
+							if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+							{	
+								/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+								inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+								vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							}
+							else
+							{
+								inFunc_ResetTitle(pobTran);
+								DISPLAY_OBJECT	srDispMsgObj;
+								memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+								snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+								inDISP_ErrorMsg(&srDispMsgObj);
+								return (VS_ERROR);
+							}
+						}
+					}
+				}
                 while (1)
                 {
                         ginEventCode = -1;
@@ -6787,7 +7342,21 @@ int inFunc_GetCardFields_HG(TRANSACTION_OBJECT *pobTran)
                                 /* 晶片卡事件 */
                                 ginEventCode = _EMV_DO_EVENT_;
                         }
-                        
+						/* ------------偵測觸發ECR交易------------------ [115150]*/
+						if (pobTran->uszECRBit == VS_TRUE)
+						{	
+							if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+							{
+								memset(szTemplate, 0x00, sizeof(szTemplate));
+								inGetSupECR_UDP(szTemplate);
+								/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+								/* 不含UDP連線 */
+								if (memcmp(szTemplate, "Y", 1) != 0)
+								{
+									ginEventCode =  _ECR_EVENT_;
+								}
+							}
+						}
                         /* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -7006,7 +7575,8 @@ int inFunc_GetCardFields_MailOrder(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-
+	unsigned short	usLen = 0;  /* [115150] */
+	char szSup_UDP[2 + 1] = {0}; /* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_MailOrder START!");
 	
 	memset(szCustomerIndicator, 0x00, sizeof(szCustomerIndicator));
@@ -7110,7 +7680,43 @@ int inFunc_GetCardFields_MailOrder(TRANSACTION_OBJECT *pobTran)
 
                         break;
                 }
-		
+				/* 走ECR流程 [115150] */
+				else if(ginEventCode == _ECR_EVENT_)
+				{
+					if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+					{
+						inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+					}
+					else
+					{	
+						/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+						if(pobTran->inTransactionCode == _VOID_TRANS_)
+						{
+							/* 規格Trans Type:90 不送CR */
+							/* 這邊寫法參考inNCCC_DCC_CHECK */
+							pobTran->szAgreeEsgBill[0] = 'N';
+							pobTran->uszEsgOptrionBit = VS_TRUE;
+							pobTran->szEsgSendCR[0] = 'N';
+							/* 傳Response 回pos機 */
+							if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+							{	
+								/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+								inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+								vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							}
+							else
+							{
+								inFunc_ResetTitle(pobTran);
+								DISPLAY_OBJECT	srDispMsgObj;
+								memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+								snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+								inDISP_ErrorMsg(&srDispMsgObj);
+								return (VS_ERROR);
+							}
+						}
+					}
+				}		
 		inDISP_Clear_Line(_LINE_8_4_, _LINE_8_8_);
 		/* 客製化123，過卡時設為較最亮 */
 		if (!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_123_IKEA_, _CUSTOMER_INDICATOR_SIZE_)	||
@@ -7123,7 +7729,21 @@ int inFunc_GetCardFields_MailOrder(TRANSACTION_OBJECT *pobTran)
 		{
 			ginEventCode = -1;
 			
-			
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szTemplate, 0x00, sizeof(szTemplate));
+					inGetSupECR_UDP(szTemplate);
+					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
+					/* 不含UDP連線 */
+					if (memcmp(szTemplate, "Y", 1) != 0)
+					{
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
