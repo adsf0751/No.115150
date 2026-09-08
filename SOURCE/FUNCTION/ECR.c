@@ -11131,7 +11131,7 @@ int inECR_8N1_Standard_Pack(TRANSACTION_OBJECT *pobTran, ECR_TABLE * srECROb, ch
 
 	/* ECR Response Code (4 Byte) */
 	memcpy(&szDataBuffer[inPacketSizes], "0000", 4);
-	if(!memcmp(srECROb->srTransData.szTransType, _ECR_8N1_VOID_EDC_TRANS_, 2))
+	if(!memcmp(srECROb->srTransData.szTransType, _ECR_8N1_VOID_EDC_TRANS_, 2))/* [115150] */
         {
             memcpy(&szDataBuffer[inPacketSizes], "0006", 4);
         }
@@ -19739,6 +19739,14 @@ int inECR_8N1_Customer_107_Bumper_Unpack(TRANSACTION_OBJECT *pobTran, ECR_TABLE*
 		case _ECR_8N1_INQUIRY_LAST_TRANSACTION_NO_:
 			inRetVal = VS_SUCCESS;
 			break;
+		case _ECR_8N1_VOID_EDC_TRANS_NO_: /*[115150]*/
+		{	
+			pobTran->inTransactionCode = _VOID_TRANS_;
+			pobTran->srBRec.inCode = _VOID_TRANS_;
+			pobTran->srBRec.inOrgCode = _VOID_TRANS_;
+			inRetVal = VS_SUCCESS;
+			break;
+		}
 		default:
 			pobTran->inECRErrorMsg = _ECR_RESPONSE_CODE_TRANS_FLOW_ERROR_;
 			inRetVal = VS_ERROR;
@@ -24479,6 +24487,14 @@ int inECR_8N1_Customer_111_Kiosk_Standard_Unpack(TRANSACTION_OBJECT *pobTran, EC
 		case _ECR_8N1_INQUIRY_LAST_TRANSACTION_NO_:
 			inRetVal = VS_SUCCESS;
 			break;
+		case _ECR_8N1_VOID_EDC_TRANS_NO_: /*[115150]*/
+		{	
+			pobTran->inTransactionCode = _VOID_TRANS_;
+			pobTran->srBRec.inCode = _VOID_TRANS_;
+			pobTran->srBRec.inOrgCode = _VOID_TRANS_;
+			inRetVal = VS_SUCCESS;
+			break;
+		}
 		default:
 			pobTran->inECRErrorMsg = _ECR_RESPONSE_CODE_TRANS_FLOW_ERROR_;
 			inRetVal = VS_ERROR;

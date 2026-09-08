@@ -773,8 +773,8 @@ int inFunc_GetCardFields(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields START!");
         
 	if (ginDebug == VS_TRUE)
@@ -1107,11 +1107,16 @@ int inFunc_GetCardFields(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_)
+						))
 					{
 						ginEventCode =  _ECR_EVENT_;
 					}
@@ -1214,8 +1219,8 @@ int inFunc_GetCardFields_Txno(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Txno START!");
         
 	if (ginDebug == VS_TRUE)
@@ -1561,11 +1566,16 @@ int inFunc_GetCardFields_Txno(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_)
+						))
 					{
 						ginEventCode =  _ECR_EVENT_;
 					}
@@ -1673,8 +1683,8 @@ int inFunc_GetCardFields_ICC(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_ICC START!");
 	if (ginDebug == VS_TRUE)
 	{
@@ -2028,40 +2038,23 @@ int inFunc_GetCardFields_ICC(TRANSACTION_OBJECT *pobTran)
 			
                         break;
                 }
-			/* 走ECR流程 [115150] */
-			else if(ginEventCode == _ECR_EVENT_)
-			{
-				if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
-					vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
-				}
-				else
-				{	
-					/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
-					if(pobTran->inTransactionCode == _VOID_TRANS_)
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_)
+						))
 					{
-						/* 規格Trans Type:90 不送CR */
-						/* 這邊寫法參考inNCCC_DCC_CHECK */
-						pobTran->szAgreeEsgBill[0] = 'N';
-						pobTran->uszEsgOptrionBit = VS_TRUE;
-						pobTran->szEsgSendCR[0] = 'N';
-						/* 傳Response 回pos機 */
-						if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
-						{	
-							/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
-							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
-							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
-						}
-						else
-						{
-							inFunc_ResetTitle(pobTran);
-							DISPLAY_OBJECT	srDispMsgObj;
-							memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
-							snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
-							inDISP_ErrorMsg(&srDispMsgObj);
-							return (VS_ERROR);
-						}
+						ginEventCode =  _ECR_EVENT_;
 					}
 				}
 			}
@@ -2143,12 +2136,15 @@ int inFunc_GetCardFields_ICC(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
-					{
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+						){
 						ginEventCode =  _ECR_EVENT_;
 					}
 				}
@@ -2265,8 +2261,8 @@ int inFunc_GetCardFields_CTLS(TRANSACTION_OBJECT *pobTran)
 	char		szECR_UDP_Version[2 + 1] = {0};
 	long		lnTimeout = 0;
 	unsigned long   ulCTLS_RetVal = -1;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_CTLS START!");
 	if (ginDebug == VS_TRUE)
 	{
@@ -2987,11 +2983,16 @@ int inFunc_GetCardFields_CTLS(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_)
+						))
 					{
 						ginEventCode =  _ECR_EVENT_;
 					}
@@ -3234,8 +3235,8 @@ int inFunc_GetCardFields_Refund_CTLS(TRANSACTION_OBJECT *pobTran)
 	char		szCUPContactlessEnable[1 + 1] = {0};
 	long		lnTimeout = 0;
         unsigned long   ulCTLS_RetVal = 0x00;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Refund_CTLS START!");
         
 	if (ginDebug == VS_TRUE)
@@ -3243,7 +3244,7 @@ int inFunc_GetCardFields_Refund_CTLS(TRANSACTION_OBJECT *pobTran)
 		inLogPrintf(AT, "----------------------------------------");
 		inLogPrintf(AT, "inFunc_GetCardFields_Refund_CTLS() START !");
 	}
-	
+
 	memset(szCTLSEnable, 0x00, sizeof(szCTLSEnable));
 	inGetContactlessEnable(szCTLSEnable);
 	memset(szCUPContactlessEnable, 0x00, sizeof(szCUPContactlessEnable));
@@ -3749,11 +3750,16 @@ int inFunc_GetCardFields_Refund_CTLS(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_)
+						))
 					{
 						ginEventCode =  _ECR_EVENT_;
 					}
@@ -3897,8 +3903,8 @@ int inFunc_GetCardFields_Refund_CTLS_Txno(TRANSACTION_OBJECT *pobTran)
 	char		szCUPContactlessEnable[1 + 1] = {0};
 	long		lnTimeout = 0;
         unsigned long   ulCTLS_RetVal = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Refund_CTLS_Txno START!");
         
 	if (ginDebug == VS_TRUE)
@@ -4407,11 +4413,16 @@ int inFunc_GetCardFields_Refund_CTLS_Txno(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_)
+						))
 					{
 						ginEventCode =  _ECR_EVENT_;
 					}
@@ -4558,8 +4569,8 @@ int inFunc_GetCardFields_FISC(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_FISC START!");
         
 	if (ginDebug == VS_TRUE)
@@ -4737,11 +4748,16 @@ int inFunc_GetCardFields_FISC(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_)
+						))
 					{
 						ginEventCode =  _ECR_EVENT_;
 					}
@@ -4831,8 +4847,8 @@ int inFunc_GetCardFields_FISC_CTLS(TRANSACTION_OBJECT *pobTran)
         char		szKey = 0;
 	char		szCustomerIndicator[3 + 1] = {0};
 	unsigned long   ulCTLS_RetVal = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         if (ginDebug == VS_TRUE)
         {
                 inLogPrintf(AT, "----------------------------------------");
@@ -5142,12 +5158,15 @@ int inFunc_GetCardFields_FISC_CTLS(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
-					{
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+					   ){
 						ginEventCode =  _ECR_EVENT_;
 					}
 				}
@@ -5259,8 +5278,8 @@ int inFunc_GetCardFields_FISC_CTLS_Refund(TRANSACTION_OBJECT *pobTran)
 	char		szCustomerIndicator[3 + 1] = {0};
         char		szKey = 0;
 	unsigned long   ulCTLS_RetVal = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */	
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */	
 	if (ginDebug == VS_TRUE)
 	{
 		inLogPrintf(AT, "----------------------------------------");
@@ -5562,12 +5581,15 @@ int inFunc_GetCardFields_FISC_CTLS_Refund(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
-					{
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+						){
 						ginEventCode =  _ECR_EVENT_;
 					}
 				}
@@ -5660,8 +5682,8 @@ int inFunc_GetCardFields_Loyalty_Redeem_Swipe(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Loyalty_Redeem_Swipe START!");
 	
 	if (ginDebug == VS_TRUE)
@@ -5923,16 +5945,19 @@ int inFunc_GetCardFields_Loyalty_Redeem_Swipe(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
-					{
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+						){
 						ginEventCode =  _ECR_EVENT_;
 					}
 				}
-			}			
+			}	
 			/* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -6036,8 +6061,8 @@ int inFunc_GetCardFields_Loyalty_Redeem_CTLS(TRANSACTION_OBJECT *pobTran)
 	char		szTemplate[3 + 1] = {0};
 	long		lnTimeout = 0;
         unsigned long   ulCTLS_RetVal = 0x00;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_Loyalty_Redeem_CTLS START!");
 	
 	if (ginDebug == VS_TRUE)
@@ -6427,12 +6452,15 @@ int inFunc_GetCardFields_Loyalty_Redeem_CTLS(TRANSACTION_OBJECT *pobTran)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
-					{
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+						){
 						ginEventCode =  _ECR_EVENT_;
 					}
 				}
@@ -6940,8 +6968,8 @@ int inFunc_GetCardFields_HG(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
         vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_HG START!");
         
 	memset(szCustomerIndicator, 0x00, sizeof(szCustomerIndicator));
@@ -7342,21 +7370,24 @@ int inFunc_GetCardFields_HG(TRANSACTION_OBJECT *pobTran)
                                 /* 晶片卡事件 */
                                 ginEventCode = _EMV_DO_EVENT_;
                         }
-						/* ------------偵測觸發ECR交易------------------ [115150]*/
-						if (pobTran->uszECRBit == VS_TRUE)
-						{	
-							if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
-							{
-								memset(szTemplate, 0x00, sizeof(szTemplate));
-								inGetSupECR_UDP(szTemplate);
-								/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-								/* 不含UDP連線 */
-								if (memcmp(szTemplate, "Y", 1) != 0)
-								{
-									ginEventCode =  _ECR_EVENT_;
-								}
-							}
-						}
+			/* ------------偵測觸發ECR交易------------------ [115150]*/
+			if (pobTran->uszECRBit == VS_TRUE)
+			{	
+				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+				{
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+					   ){
+						ginEventCode =  _ECR_EVENT_;
+					}
+				}
+			}
                         /* ------------偵測key in------------------ */
 			szKey = -1;
 			szKey = uszKBD_Key();
@@ -7575,8 +7606,8 @@ int inFunc_GetCardFields_MailOrder(TRANSACTION_OBJECT *pobTran)
 	char	szCustomerIndicator[3 + 1] = {0};
 	char	szTemplate[3 + 1] = {0};
 	long	lnTimeout = 0;
-	unsigned short	usLen = 0;  /* [115150] */
-	char szSup_UDP[2 + 1] = {0}; /* [115150] */
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
 	vdUtility_SYSFIN_LogMessage(AT, "inFunc_GetCardFields_MailOrder START!");
 	
 	memset(szCustomerIndicator, 0x00, sizeof(szCustomerIndicator));
@@ -7728,18 +7759,20 @@ int inFunc_GetCardFields_MailOrder(TRANSACTION_OBJECT *pobTran)
 		while (1)
 		{
 			ginEventCode = -1;
-			
 			/* ------------偵測觸發ECR交易------------------ [115150]*/
 			if (pobTran->uszECRBit == VS_TRUE)
 			{	
 				if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
 				{
-					memset(szTemplate, 0x00, sizeof(szTemplate));
-					inGetSupECR_UDP(szTemplate);
-					/* 沒有gbECR_UDP_TransBit，是否支援UDP(設定UDP IP)為判斷 */
-					/* 不含UDP連線 */
-					if (memcmp(szTemplate, "Y", 1) != 0)
-					{
+					memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+					inGetSupECR_UDP(szSup_UDP);
+					/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+					/* 不支援UDP連線，客製化包含107、111 */
+					if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+						(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+						 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+					   ){
 						ginEventCode =  _ECR_EVENT_;
 					}
 				}
