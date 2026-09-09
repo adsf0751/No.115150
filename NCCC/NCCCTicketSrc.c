@@ -4465,7 +4465,8 @@ int inNCCC_Ticket_Fast_Tap_Wait(TRANSACTION_OBJECT * pobTran, char *szUID)
 	char		szCustomerIndicator[3 + 1] = {0};
 	long		lnTimeout = 0;
 	unsigned char	uszKey = 0x00;
-	
+	unsigned short	usLen = 0;		/* [115150] */
+	char szSup_UDP[2 + 1] = {0};	/* [115150] */
 	memset(szCustomerIndicator, 0x00, sizeof(szCustomerIndicator));
 	inGetCustomIndicator(szCustomerIndicator);
 	
@@ -4522,6 +4523,56 @@ int inNCCC_Ticket_Fast_Tap_Wait(TRANSACTION_OBJECT * pobTran, char *szUID)
 	
 	while (1)
 	{
+		/* ------------偵測觸發ECR交易------------------ [115150]*/
+		if (pobTran->uszECRBit == VS_TRUE)
+		{	
+			if (inECR_Receive_Check(&usLen) == VS_SUCCESS)
+			{
+				memset(szSup_UDP, 0x00, sizeof(szSup_UDP));
+				inGetSupECR_UDP(szSup_UDP);
+				/* 收銀機通訊設定POS IP會支援UDP，設定0.0.0.0會關閉支援UDP */
+				/* 不支援UDP連線，客製化包含107、111 */
+				if (  memcmp(szSup_UDP, "N", 1) == 0 &&
+					(!memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_000_, _CUSTOMER_INDICATOR_SIZE_)		 ||
+					 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_107_BUMPER_, _CUSTOMER_INDICATOR_SIZE_) ||
+					 !memcmp(szCustomerIndicator, _CUSTOMER_INDICATOR_111_KIOSK_STANDARD_, _CUSTOMER_INDICATOR_SIZE_))
+					){
+						if( (inRetVal = inECR_Receive_Transaction(pobTran)) != VS_SUCCESS)
+						{
+							inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+							vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+						}
+						else
+						{	
+							/* 收到的第二段ECR只處理交易別:90(終止EDC交易) */
+							if(pobTran->inTransactionCode == _VOID_TRANS_)
+							{
+								/* 規格Trans Type:90 不送CR */
+								/* 這邊寫法參考inNCCC_DCC_CHECK */
+								pobTran->szAgreeEsgBill[0] = 'N';
+								pobTran->uszEsgOptrionBit = VS_TRUE;
+								pobTran->szEsgSendCR[0] = 'N';
+								/* 傳Response 回pos機 */
+								if( (inRetVal = inECR_Send_Transaction(pobTran)) != VS_SUCCESS )
+								{	
+									/* 這邊回寫給pos機失敗 好像沒設定pobTran->inECRErrorMsg? */
+									inLogPrintf(AT,"inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+									vdUtility_SYSFIN_LogMessage(AT, "inECR_Receive_Transaction Error,inRetVal is %d",inRetVal);
+								}
+								else
+								{
+									inFunc_ResetTitle(pobTran);
+									DISPLAY_OBJECT	srDispMsgObj;
+									memset(&srDispMsgObj, 0x00, sizeof(srDispMsgObj));
+									snprintf(srDispMsgObj.szErrMsg1,sizeof(srDispMsgObj.szErrMsg1),"使用者終止交易");
+									inDISP_ErrorMsg(&srDispMsgObj);
+									return (VS_ERROR);
+								}
+							}
+						}
+					}
+			}
+		}
 		uszKey = uszKBD_Key();
 		
 		/* 感應倒數時間 && Display Countdown */
