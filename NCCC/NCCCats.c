@@ -411,7 +411,6 @@ ISO_TYPE_NCCC_ATS_TABLE srNCCC_ATS_ISOFunc[] =
 Function        :inNCCC_ATS_Func_SetTxnOnlineOffline
 Date&Time       :2016/9/14 上午 11:52
 Describe        :根據交易別決定是否Online
-Log				:Done
 */
 int inNCCC_ATS_Func_SetTxnOnlineOffline(TRANSACTION_OBJECT *pobTran)
 {
@@ -900,7 +899,7 @@ int inNCCC_ATS_Func_BuildAndSendPacket(TRANSACTION_OBJECT *pobTran)
 	{
 		/* 如果是結帳交易，要把請先結帳的Bit On起來，直到接收到host的回覆才Off*/
 		if (pobTran->inTransactionCode == _SETTLE_)
-		{
+		{   /* 有Batch資料確認"要結帳"，這邊判別除了算未上傳(updated = 0)以外，是否能用.amt檔案的內容當作參考，確認有帳務? */
 			/* 如果是結帳交易，要把請先結帳的Bit On起來，直到接收到host的回覆才Off*/
 			inBatchCnt = inBATCH_GetTotalCountFromBakFile_By_Sqlite(pobTran);
 			if (inBatchCnt >= 0)
@@ -981,7 +980,8 @@ int inNCCC_ATS_Func_BuildAndSendPacket(TRANSACTION_OBJECT *pobTran)
 			
 			/* 步驟 1.4 */
 			if (pobTran->inTransactionCode == _SETTLE_)
-			{
+			{	/* 根據ADVICE筆數去跑迴圈，每次取調閱編號的那筆Record看要送tc_upload還是advice，
+                 * 上送完成的advice改存batch(updated = 0)，刪除_adv檔案的這筆調閱編號 */
 				if ((inRetVal = inNCCC_ATS_ProcessAdvice(pobTran)) != VS_SUCCESS)
 				{					
 					/* 只有結帳時前送advice錯誤時要顯示錯誤訊息，在inNCCC_ATS_ISOAdviceAnalyse裡顯示錯誤訊息 */
@@ -989,7 +989,7 @@ int inNCCC_ATS_Func_BuildAndSendPacket(TRANSACTION_OBJECT *pobTran)
 					vdUtility_SYSFIN_LogMessage(AT, "inNCCC_ATS_ProcessAdvice fail，ErrorMsg: %d",pobTran->inErrorMsg);
 					return (inRetVal);
 				}
-
+                                /*從db取最舊的advice esc record，上送0220(processing code = 690000)，上送成功後，從db刪除*/
 				if ((inRetVal = inNCCC_ATS_ProcessAdvice_ESC(pobTran)) != VS_SUCCESS)
 				{
                                         vdUtility_SYSFIN_LogMessage(AT, "inNCCC_ATS_Func_BuildAndSendPacket inNCCC_ATS_ProcessAdvice_ESC failed");
@@ -1002,9 +1002,11 @@ int inNCCC_ATS_Func_BuildAndSendPacket(TRANSACTION_OBJECT *pobTran)
 
 				memset(szCLS_SettleBit, 0x00, sizeof(szCLS_SettleBit));
 				inGetCLS_SettleBit(szCLS_SettleBit);
-
+				/* 流程應該是先送0500(930000)結帳，如果是回95，傳batch_upload，傳成功刪除當筆batch，
+				 * 遇到上送電文錯誤，設定CLS_SettleBit = Y，下次結帳強制跑0500(930000)繼續送之前未上送的batch資料，
+				 * 統一送0500(960000)當結束? */
 				if (memcmp(szCLS_SettleBit, "Y", strlen("Y")) == 0)
-				{
+				{	
 					pobTran->inTransactionCode = _CLS_SETTLE_;
 					pobTran->srBRec.inCode = _CLS_SETTLE_;
 				}
@@ -13112,10 +13114,10 @@ int inNCCC_ATS_ISOAdviceAnalyse(TRANSACTION_OBJECT *pobTran, unsigned char *uszT
 	
 		/* 若不是當筆TCUpload，而是送一般advice，要做batch更新和更新advice檔 */
 		if (pobTran->uszTCUploadBit != VS_TRUE && pobTran->uszFiscConfirmBit != VS_TRUE)
-		{
+		{       /*如果是送一般advice，會先把送出去的Record新增(Insert)到Batch Table*/
 			if (inFLOW_RunFunction(pobTran, _UPDATE_BATCH_) != VS_SUCCESS)
 				return (VS_ERROR);
-
+                        /*原先取出的調閱編號要從.adv檔案中刪除*/
 			/* 如果【ADVICE】刪除失敗會鎖機，使用Global的Handle */
 			if (inADVICE_Update(pobTran) != VS_SUCCESS)
 			{
@@ -14028,9 +14030,7 @@ int inNCCC_ATS_GetFieldIndex(int inField, ISO_FIELD_TYPE_NCCC_ATS_TABLE *srField
 
 	return (VS_ERROR);
 }
-/*
- Log		:Done
- */
+
 int inNCCC_ATS_UnPackISO(TRANSACTION_OBJECT *pobTran, unsigned char *uszSendBuf, unsigned char *uszRecvBuf)
 {
 	int				inRetVal;
@@ -14162,7 +14162,7 @@ int inNCCC_ATS_UnPackISO(TRANSACTION_OBJECT *pobTran, unsigned char *uszSendBuf,
                 else if (inNCCC_ATS_BitMapCheck(uszReceMap, i)) /* 收的 BitMap */
                 {
                         if (inNCCC_ATS_BitMapCheck(uszSendMap, i)) /* 送的 BitMap 都有 */
-                        {
+                        {		/* 判斷有些欄位的送收要一致，包含process code/TID等等 */
                                 /* 是否要進行檢查封包資料包含【送】【收】 */
                                 if ((inSendField = inNCCC_ATS_GetCheckField(i, srISOFunc.srCheckISO)) != VS_ERROR)
                                 {
@@ -14540,7 +14540,6 @@ int inNCCC_ATS_ProcessReversal(TRANSACTION_OBJECT *pobTran)
 Function        :inNCCC_ATS_AdviceSendRecvPacket
 Date&Time       :2016/9/14 上午 9:42
 Describe        :
-Log				:Done
 */
 int inNCCC_ATS_AdviceSendRecvPacket(TRANSACTION_OBJECT *pobTran, int inAdvCnt)
 {
@@ -14577,6 +14576,8 @@ int inNCCC_ATS_AdviceSendRecvPacket(TRANSACTION_OBJECT *pobTran, int inAdvCnt)
 			/* 讀最後一筆，最先進去會在最後一筆 */
 			ADVpobTran.srBRec.lnOrgInvNum = _BATCH_LAST_RECORD_;
                         /* 這裡要開始逐一將【0220】交易上傳 */
+                        /* 上面設定_BATCH_LAST_RECORD_ ，但inBATCH_GetAdviceDetailRecord_By_Sqlite又會重抓.adv檔案的調閱編號*/
+			/* 兩步驟:1.從.adv檔案取得Invoice Number 2.load該筆調閱編號的Record */
 			inRetVal = inBATCH_GetAdviceDetailRecord_By_Sqlite(&ADVpobTran, inCnt);
                         if (inRetVal == VS_SUCCESS)
                         {
@@ -15478,7 +15479,6 @@ int inNCCC_ATS_ReversalSave(TRANSACTION_OBJECT *pobTran)
 Function        :inNCCC_ATS_ReversalSave_For_DialBeckUp
 Date&Time       :2017/3/30 上午 10:24
 Describe        :
-Log				:Done
 */
 int inNCCC_ATS_ReversalSave_For_DialBeckUp(TRANSACTION_OBJECT *pobTran)
 {
@@ -15547,9 +15547,6 @@ int inNCCC_ATS_ReversalSave_For_DialBeckUp(TRANSACTION_OBJECT *pobTran)
 
         return (VS_SUCCESS);
 }
-/*
-Log		:Done
- */
 int inNCCC_ATS_CommSendRecvToHost(TRANSACTION_OBJECT *pobTran, unsigned char *uszSendPacket, int inSendLen, unsigned char *uszRecvPacket)
 {
         int		inRetVal;

@@ -1856,11 +1856,11 @@ int inBATCH_GetInvoiceNumber(TRANSACTION_OBJECT *pobTran)
                 else if (inRetVal > 0)
                 {
                         for (i = 0; i < inRetVal; i ++)
-                        {
+                        {		
                                 if ((srDispObj.szOutput[i] >= '0') && (srDispObj.szOutput[i] <= '9'))
                                         continue;
                                 else
-                                {
+                                {		/* 非0~9清空且重新輸入調閱編號 */
                                         memset(srDispObj.szOutput, 0x00, sizeof(srDispObj.szOutput));
                                         break;
                                 }
@@ -7359,6 +7359,7 @@ int inBATCH_FuncUserChoice_By_Sqlite(TRANSACTION_OBJECT *pobTran)
 				}
 
 				/* 因為EDC如果按確認鍵，等於調出上一筆記錄 */
+				/* 感覺這段是多餘的，從inBATCH_GetInvoiceNumber ByPass會設定srBRec.lnOrgInvNum = _BATCH_LAST_RECORD_ */
 				if (pobTran->srBRec.lnOrgInvNum == 0)
 					pobTran->srBRec.lnOrgInvNum = _BATCH_LAST_RECORD_; /* 表示是最後一筆 */
 			}

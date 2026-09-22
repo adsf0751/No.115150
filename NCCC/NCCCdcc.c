@@ -301,7 +301,6 @@ ISO_TYPE_NCCC_DCC_TABLE srNCCC_DCC_ISOFunc[] =
 Function        :inNCCC_DCC_Func_SetTxnOnlineOffline
 Date&Time       :2016/9/14 上午 11:52
 Describe        :根據交易別決定是否Online
-Log				:Done
 */
 int inNCCC_DCC_Func_SetTxnOnlineOffline(TRANSACTION_OBJECT *pobTran)
 {
@@ -12780,7 +12779,7 @@ int inNCCC_DCC_Sync_BatchNumber(TRANSACTION_OBJECT *pobTran)
 			else if (atol(szBatchNumNCCC) > atol(szBatchNumDCC))
 			{
 				pobTran->srBRec.inHDTIndex = inDCC_HostIndex;	/* 這個動作是為了inACCUM_Check_Transaction_Count還原用pobTran->srBRec.inHDTIndex */
-
+				
 				if (inLoadHDPTRec(inDCC_HostIndex) != VS_SUCCESS)
 					return (VS_ERROR);
 				
@@ -12788,6 +12787,7 @@ int inNCCC_DCC_Sync_BatchNumber(TRANSACTION_OBJECT *pobTran)
 				{
 					/* DCC有帳的狀況，強制結帳 */
 					szTrnas = 0x00;
+					/* 有存在金額檔案(DCC+Batch Num + .amt) 代表有帳務? */
 					if (inACCUM_Check_Transaction_Count(pobTran, _HOST_NAME_DCC_, &szTrnas) != VS_SUCCESS)
 					{
 						return (VS_ERROR);

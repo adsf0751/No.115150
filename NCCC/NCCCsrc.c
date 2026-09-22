@@ -4758,7 +4758,6 @@ int inNCCC_Func_Get4DBC(TRANSACTION_OBJECT *pobTran)
 Function        :inNCCC_Func_VOID_Confirm
 Date&Time       :2015/10/22 下午 04:00
 Describe        :按0確認是否要進行取消交易
-Log				:Done
 */
 int inNCCC_Func_VOID_Confirm(TRANSACTION_OBJECT *pobTran)
 {
@@ -4871,7 +4870,7 @@ int inNCCC_Func_VOID_Confirm(TRANSACTION_OBJECT *pobTran)
 Function        :inNCCC_Func_VOID_Check
 Date&Time       :2015/10/22 下午 04:00
 Describe        :確認是否能進行取消交易
-Log				:Done
+
 */
 int inNCCC_Func_VOID_Check(TRANSACTION_OBJECT *pobTran)
 {
@@ -13562,7 +13561,6 @@ int inNCCC_Func_BuildAndSendPacket_Retry_Flow(TRANSACTION_OBJECT *pobTran, int i
 Function        :inNCCC_Func_SetTxnOnlineOffline_Flow
 Date&Time       :2018/5/28 上午 11:14
 Describe        :
-Log				:Done
 */
 int inNCCC_Func_SetTxnOnlineOffline_Flow(TRANSACTION_OBJECT * pobTran)
 {
@@ -17764,7 +17762,7 @@ int inNCCC_Func_Check_TMS_Setting_Compatible(TRANSACTION_OBJECT* pobTran)
 
 		inHostCnt ++;
 	}
-	
+	/* 可能無法確定是否有load到別的主機HDT資料，於是這邊從Load一次 */
 	/* 修正未過卡前，會判定到其他host的問題 */
 	if (pobTran->srBRec.inHDTIndex < 0)
 	{

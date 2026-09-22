@@ -1251,6 +1251,7 @@ Function        :inNCCC_ESC_Func_Upload_Settle
 Date&Time       :2016/5/4 下午 4:23
 Describe        :Settle上傳ESC
 */
+/* 流程:先重送AGAIN區，遇到ESCAPED或是送收錯誤就中斷，接著把AGAIN區和FAIL區分別轉紙本，當筆轉紙本換存成ADVICE */
 int inNCCC_ESC_Func_Upload_Settle(TRANSACTION_OBJECT *pobTran)
 {
 	int			inRetVal = 0;
@@ -1636,7 +1637,7 @@ int inNCCC_ESC_Func_Upload_Settle(TRANSACTION_OBJECT *pobTran)
 						{
 							uszTipBit = VS_FALSE;
 						}
-						
+						/* 透過原調閱編號取得這筆batch record */
 						inBATCH_GetTransRecord_By_Sqlite(&pobESCTran);
 						pobESCTran.srBRec.inESCUploadStatus = _ESC_UPLOAD_STATUS_UPLOADED_;
 						if (uszTipBit == VS_TRUE)
@@ -1647,6 +1648,7 @@ int inNCCC_ESC_Func_Upload_Settle(TRANSACTION_OBJECT *pobTran)
 						{
 							pobESCTran.srBRec.uszESCOrgUploadBit = VS_TRUE;
 						}
+						/* insert 這筆交易 條件是updated = 0 到table */
 						inBATCH_Update_ESC_Uploaded_By_Sqlite(&pobESCTran);
 						inNCCC_ESC_Delete_Again_Record_Most_TOP(&pobESCTran);
 					}
@@ -1733,7 +1735,7 @@ int inNCCC_ESC_Func_Upload_Settle(TRANSACTION_OBJECT *pobTran)
 
 				/* 當筆出紙本要送advice告訴fes把當筆紙本的flag on 起來(DCC才會用到NE) */
 				pobESCTran.srBRec.inESCUploadStatus = _ESC_UPLOAD_STATUS_PAPER_;
-				inBATCH_ESC_Save_Advice_Flow(&pobESCTran);
+				inBATCH_ESC_Save_Advice_Flow(&pobESCTran) ;
 				
 				/* 標示為已出紙本 */
 				inBATCH_GetTransRecord_By_Sqlite(&pobESCTran);

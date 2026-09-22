@@ -957,18 +957,18 @@ int inFunc_GetCardFields(TRANSACTION_OBJECT *pobTran)
 					return (VS_ERROR);
 				}
 			}
-			
+			/* 輸入卡號，預設帶入手輸第一個數字，超過多少個字後畫面會縮小，以容納更多數字顯示在螢幕上 */
 			inRetVal = inCREDIT_Func_Get_Card_Number(pobTran);
 			if (inRetVal != VS_SUCCESS)
 			{
 				return (inRetVal);
 			}
-			
+			/* 如果手輸卡號長度剛好是11，變更卡號為4000+手輸卡號+ 檢查碼 */
 			if (inCARD_Generate_Special_Card(pobTran->srBRec.szPAN) != VS_SUCCESS)
 			{
 				return (VS_ERROR);
 			}
-			
+			/* 找到符合卡號範圍的CDT.dat，取得主機索引，取得HDT的 Batch Number, STAN Number, Invoice Number*/
                         /* 第一步驟 判斷card bin 讀HDT */
                         if (inCARD_GetBin(pobTran) != VS_SUCCESS)
                                 return(VS_ERROR);
@@ -987,7 +987,7 @@ int inFunc_GetCardFields(TRANSACTION_OBJECT *pobTran)
                         inRetVal = inCREDIT_Func_Get_CheckNO_ExpDate_Flow(pobTran);
 			if (inRetVal != VS_SUCCESS)
 				return (inRetVal);
-
+                        /* 當筆交易日期和有效期比較，檢查有卡片有效期是否過期 */
                         /* 第四步驟檢核ExpDate */
 			if (inCARD_ValidTrack2_ExpDate(pobTran) != VS_SUCCESS)
 				return (VS_ERROR);
@@ -11827,6 +11827,7 @@ int inFunc_UpdateInvNum(TRANSACTION_OBJECT *pobTran)
 
 					/* Check REVERSAL */
 					memset(uszFileName, 0x00, sizeof(uszFileName));
+
 					if (inFunc_ComposeFileName(&pobTempTran, (char*)uszFileName, _REVERSAL_FILE_EXTENSION_, 6) != VS_SUCCESS)
 					{
                                                 vdUtility_SYSFIN_LogMessage(AT, "inFunc_UpdateInvNum inFunc_ComposeFileName _REVERSAL_FILE_EXTENSION_ failed");
@@ -12221,7 +12222,8 @@ int inFunc_UpdateBatchNum(TRANSACTION_OBJECT *pobTran)
 /*
 Function        :inFunc_DeleteBatch
 Date&Time       :2016/10/4 上午 11:49
-Describe        :
+Describe        :從TRTHostName抓HDT HostName，先砍簽名檔，依據每個主機去砍reversal、advice，
+				 最後再砍batch table(包含batch 、emv、esc_again、esc_fail 等)
 */
 int inFunc_DeleteBatch(TRANSACTION_OBJECT *pobTran)
 {
@@ -12566,7 +12568,7 @@ int inFunc_DeleteBatch_Flow(TRANSACTION_OBJECT *pobTran)
 	/* 標記為已做過 */
         if (pobTran->inRunTRTID == _TRT_SETTLE_ ||
 	    pobTran->inRunTRTID == _TRT_TICKET_ECC_SETTLE_)
-        {
+        {		/* 修改xml該tag的value */
                 inNCCC_Func_Settlement_XML_Edit(_SETTLENMENT_RECOVER_XML_TAG_FUNCTION_DELETE_BATCH_FLOW_, "Y");
         }
 	
